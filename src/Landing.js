@@ -10,9 +10,9 @@ export class Landing extends React.Component {
         <div>
           <div id="landing">
               <h1>Are you a parasocial Andy?</h1>
-              <h2>Guess who tweeted what.
+              <h3>Guess who tweeted what.
                   <br/>
-                  Prove that you are your favorite streamer’s biggest superfan.</h2>
+                  Prove that you are your favorite streamer’s biggest superfan.</h3>
           </div>
         </div>
       );

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-* {
+*:not(.twitter-tweet) {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
@@ -8,7 +8,7 @@
 html {
   height: 100%;
   width: 100%;
-  background: linear-gradient(-45deg, #ff41a9, #6441A5, #00ACEE, #007f88);
+  background: linear-gradient(-45deg, #ff41a9, #6441A5, #1DA1F2, #007f88);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   text-align: center;
@@ -36,14 +36,24 @@ html {
     }
 }
 
-h1, h2 {
+h1, h2, h3 {
   color: white;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 16pt;
+}
+
+#logo {
+  width: 500px;
+  height: auto;
+  padding-top: 10vh;
 }
 
 #landing {
   display: inline-block;
   width: 440px;
-  padding-top: 32vh;
 }
 
 .cta-primary {
@@ -58,7 +68,7 @@ h1, h2 {
   cursor: pointer;
   transition: 0.25s ease;
   mix-blend-mode: normal;
-  font-size: 20px;
+  font-size: 16pt;
   font-weight: 700;
 }
 
@@ -78,11 +88,19 @@ h1, h2 {
 
 .tweet-card {
   display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
   width: 600px;
   background-color: white !important;
   border-radius: 10px;
   border: rgb(207, 217, 222) solid 2px;
-  margin-top: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s ease;
 }
 
 .tweet-container {
@@ -119,7 +137,7 @@ h1, h2 {
 }
 
 .tweet-text {
-  font-size: 24px;
+  font-size: 16pt;
 }
 
 .tweet-datetime {
@@ -136,19 +154,78 @@ h1, h2 {
   height: 40px;
   line-height: 40px;
   padding: 4px 0px;
-  outline: #00ACEE solid 2px;
-  color: #00ACEE;
-  background-color: white !important;
   border-radius: 80px;
   cursor: pointer;
   transition: 0.25s ease;
   mix-blend-mode: normal;
-  font-size: 20px;
+  font-size: 16pt;
   font-weight: 700;
   margin: 12px 24px;
 }
 
-.choice:hover {
-  background-color: #00ACEE !important;
+.choice-default {
+  outline: #1DA1F2 solid 2px;
+  color: #1DA1F2;
+  background-color: white !important;
+}
+
+.choice-default:hover {
+  background-color: #1DA1F2 !important;
   color: white;
+}
+
+.choice-default:active {
+  outline: #168eda solid 2px;
+  background-color: #168eda !important;
+}
+
+.choice-wrong {
+  background-color: #c40000 !important;
+  outline: #c40000 solid 2px;
+  color: white;
+}
+
+.choice-correct {
+  background-color: #00a743 !important;
+  outline: #00a743 solid 2px;
+  color: white;
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+#high-score, #score {
+  position: absolute;
+  color: white;
+  font-size: 16pt;
+}
+
+#high-score {
+  top: 16px;
+  left: 24px;
+  font-weight: 700;
+  font-size: 16pt;
+}
+
+#score {
+  font-size: 24pt;
+  font-weight: 900;
+  bottom: 40px;
+  right: 60px;
+}
+
+#tweet-placeholder {
+  height: 320px;
+  line-height: 320px;
+  position: relative;
+}
+
+.hide-visibility {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.hide-display {
+  display: none;
 }

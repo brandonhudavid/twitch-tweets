@@ -7,7 +7,7 @@ export class Choice extends React.Component {
 
   render() {
     return (
-        <div className="choice">
+        <div className="choice choice-default" onClick={this.props.onClick}>
             {this.props.text}
         </div>
       );

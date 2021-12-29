@@ -10,12 +10,12 @@ export class MultipleChoice extends React.Component {
       return (
         <div className="mc-container">
             <div className="mc-row">
-                <Choice text={this.props.choice1}/>
-                <Choice text={this.props.choice2}/>
+                <Choice text={this.props.choices[0]} onClick={() => this.props.onClick(this.props.choices[0])}/>
+                <Choice text={this.props.choices[1]} onClick={() => this.props.onClick(this.props.choices[1])}/>
             </div>
             <div className="mc-row">
-                <Choice text={this.props.choice3}/>
-                <Choice text={this.props.choice4}/>
+                <Choice text={this.props.choices[2]} onClick={() => this.props.onClick(this.props.choices[2])}/>
+                <Choice text={this.props.choices[3]} onClick={() => this.props.onClick(this.props.choices[3])}/>
             </div>
         </div>
         
