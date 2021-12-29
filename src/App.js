@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import './App.css';
 import Zoom from 'react-reveal/Zoom';
 import Flip from 'react-reveal/Flip';
@@ -13,7 +14,7 @@ import TweetsBank from './TweetsBank';
 import Fade from 'react-reveal/Fade';
 import Slide from 'react-reveal/Slide';
 import Rotate from 'react-reveal/Rotate';
-import TwitterTweetEmbed from 'react-twitter-embed';
+import { TwitterTweetEmbed } from 'react-twitter-embed';
 
 export class App extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ export class App extends React.Component {
         correct: false,
         score: 0,
         highScore: 4,
-        href: null
+        tweetId: null
       }
       this.choices = [
         "Mizkif",
@@ -40,46 +41,6 @@ export class App extends React.Component {
       this.tweetsBank = TweetsBank;
       this.tweetId = null;
       this.tweetAttr = null;
-  }
-
-  componentDidMount() {
-    var widgetLoad = false;
-    setTimeout(() => {
-      if (!widgetLoad) widgetLoad = true;
-      clearInterval(twtInterval);
-    }, 5000);
-    if (window.twttr.widgets) {
-      window.twttr.widgets.load();
-      widgetLoad = true;
-    } else {
-      var twtInterval = setInterval(() => {
-        if (window.twttr.widgets) {
-          window.twttr.widgets.load();
-          widgetLoad = true;
-          clearInterval(twtInterval);
-        }
-      }, 1000);
-    }
-  }
-
-  componentDidUpdate() {
-    var widgetLoad = false;
-    setTimeout(() => {
-      if (!widgetLoad) widgetLoad = true;
-      clearInterval(twtInterval);
-    }, 5000);
-    if (window.twttr.widgets) {
-      window.twttr.widgets.load();
-      widgetLoad = true;
-    } else {
-      var twtInterval = setInterval(() => {
-        if (window.twttr.widgets) {
-          window.twttr.widgets.load();
-          widgetLoad = true;
-          clearInterval(twtInterval);
-        }
-      }, 1000);
-    }
   }
   
   startGame() {
@@ -113,11 +74,17 @@ export class App extends React.Component {
   }
 
   getTweet() {
+    let prevTweet = document.querySelector(".twitter-tweet-container");
+    if (prevTweet) {
+      ReactDOM.unmountComponentAtNode(prevTweet);
+    }
     var bankKeys = Object.keys(this.tweetsBank);
     this.tweetId = bankKeys[this.getRandomInt(bankKeys.length)];
     this.tweetAttr = this.tweetsBank[this.tweetId];
     this.setState({
-      href: "https://twitter.com/"+this.tweetAttr["handle"]+"/status/"+this.tweetId
+      tweetId: this.tweetId
+    }, () => {
+      ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
     })
     delete this.tweetsBank[this.tweetId];
   }
@@ -144,7 +111,6 @@ export class App extends React.Component {
         score: prevState.score + 1,
         correct: true,
       }))
-      document.querySelector("#game-prompt").innerHTML = "Correct! Click here for the next tweet."
       document.querySelector("#game-prompt").addEventListener("click", () => {
         this.startNextRound();
       }, {once: true})
@@ -191,14 +157,14 @@ export class App extends React.Component {
       );
       case "game":
         return (
-          <div>
+          <div id={this.state.tweetId}>
           <span id="high-score">High score: {this.state.highScore}</span>
           <Slide right>
             <div id="game-container">
               <Prompt guessed={this.state.guessed} correct={this.state.correct} />
               <div id="tweet-placeholder">
               <Rotate top left when={this.state.guessed}></Rotate>
-                <TweetEmbed href={this.state.href} displayed={this.state.guessed} />
+              <TweetEmbed displayed={this.state.guessed} />
               <TweetHidden text={this.tweetAttr["text"]} displayed={!this.state.guessed} />
               </div>
               <MultipleChoice choices={this.currentChoices} onClick={(selected) => this.checkAnswer(selected, this.tweetAttr["name"])}/>

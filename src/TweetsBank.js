@@ -23,7 +23,7 @@ var TweetsBank = {
         "text": "Hi @MsRebeccaBlack can I have permission to play your music on my stream? I know all your songs by heart! ♥️",
         "datetime": "3:07 PM · Dec 28, 2020"
     },
-    "1342177768486952971": {
+    "1474863301075034124": {
         "name": "Mizkif",
         "handle": "REALMizkif",
         "text": "I got a fucking toothbrush for Christmas from my mom and she said “you’re a millionaire buy the toothpaste”",

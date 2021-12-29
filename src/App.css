@@ -83,7 +83,12 @@ h3 {
 }
 
 #game-prompt {
-  padding-top: 12vh;
+  margin-top: 12vh;
+}
+
+.prompt-click {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .tweet-card {
@@ -228,4 +233,12 @@ h3 {
 
 .hide-display {
   display: none;
+}
+
+.twitter-tweet-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
 }
