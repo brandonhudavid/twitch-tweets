@@ -34,12 +34,11 @@ export class App extends React.Component {
         "Ludwig",
         "Pokimane",
         "xQc",
-        "Esfand?",
-        "Sodapoppin"
+        "Sodapoppin",
+        "???"
       ]
       this.currentChoices = []
       this.tweetsBank = TweetsBank;
-      this.tweetId = null;
       this.tweetAttr = null;
   }
   
@@ -79,14 +78,14 @@ export class App extends React.Component {
       ReactDOM.unmountComponentAtNode(prevTweet);
     }
     var bankKeys = Object.keys(this.tweetsBank);
-    this.tweetId = bankKeys[this.getRandomInt(bankKeys.length)];
-    this.tweetAttr = this.tweetsBank[this.tweetId];
+    var tweetId = bankKeys[this.getRandomInt(bankKeys.length)];
+    this.tweetAttr = this.tweetsBank[tweetId];
     this.setState({
-      tweetId: this.tweetId
+      tweetId: tweetId
     }, () => {
       ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
     })
-    delete this.tweetsBank[this.tweetId];
+    delete this.tweetsBank[tweetId];
   }
 
   getChoices(answer) {
@@ -165,7 +164,7 @@ export class App extends React.Component {
               <div id="tweet-placeholder">
               <Rotate top left when={this.state.guessed}></Rotate>
               <TweetEmbed displayed={this.state.guessed} />
-              <TweetHidden text={this.tweetAttr["text"]} displayed={!this.state.guessed} />
+              <TweetHidden text={this.tweetAttr["text"]} datetime={this.tweetAttr["datetime"]} displayed={!this.state.guessed} />
               </div>
               <MultipleChoice choices={this.currentChoices} onClick={(selected) => this.checkAnswer(selected, this.tweetAttr["name"])}/>
             </div>

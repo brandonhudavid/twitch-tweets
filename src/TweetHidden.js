@@ -24,7 +24,7 @@ export class TweetHidden extends React.Component {
                     <span className="handle-hidden"></span>
                 </div>
                 <p className="tweet-text">{this.props.text}</p>
-                <p className="tweet-datetime">7:07 PM · Nov 28, 2021</p>
+                <p className="tweet-datetime">{this.props.datetime}</p>
             </div>
         </div>
       );
