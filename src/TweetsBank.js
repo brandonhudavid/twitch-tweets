@@ -49,6 +49,30 @@ var TweetsBank = {
         "text": "MASTERCHEF IS ONE OF THE MOST ENTERTAINING PIECE OF CONTENT I'VE BINGED IN THE LONGEST TIME AND ALL I EAT IS FAST FOOD, BOOGERS AND TOENAILS. EXPLAIN?",
         "datetime": "3:51 AM · Dec 11, 2021"
     },
+    "1462843918601519105": {
+        "name": "Pokimane",
+        "text": "people have a lot of opinions on stans, but it’s undeniable that they’ve made the gaming & internet sphere more inclusive for women, lgbtq+ people, and POC. and i’m v v v grateful for that",
+        "datetime": "10:02 AM · Nov 22, 2021"
+    },
+    "1451288036998737925": {
+        "name": "Pokimane",
+        "text": "clout is one helluva drug",
+        "datetime": "1:43 PM · Oct 21, 2021"
+    },
+    "1445799237774573568": {
+        "name": "Pokimane",
+        "text": "i capped my donations a year ago since i'm now at a point where sponsors, investments, and exclusive contracts can sustain me. transparently, subs + stream ads are the lowest part of my income and i want you guys to continue keeping that money in your pocket. TREAT YOURSELVES ☺️",
+        "datetime": "10:12 AM · Oct 6, 2021"
+    },
+    "1434598778321838080": {
+        "name": "Pokimane",
+        "text": "my favorite thing to do in canada is drink tap water 😌",
+        "datetime": "12:26 PM · Sep 5, 2021"
+    },
+    "1428512691459563523": {
+        "name": "Pokimane",
+        "text": "if you hate me so much, why are you watching my stream for 5 hours straight? 👁️👄👁️",
+        "datetime": "5:22 PM · Aug 19, 2021"
     "1470126225062608900": {
         "name": "Sodapoppin",
         "text": "Vtubers are amazing, and ur all a bunch of losers. Ur just jealous i have a QT pie anime GF who appreciates ME. In fact, i have like 8 of them, im subbed & everything, ALL of them love me for who I am and ur jealous. Im living my best life, & u cant tell me wat I CAN and CANT do.",
