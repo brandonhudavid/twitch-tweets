@@ -5,13 +5,15 @@ export class TweetEmbed extends React.Component {
       super(props);
   }
 
-componentWillLeave() {
-  document.querySelector(".twitter-tweet-container").classList.add("hide-visibility");
-}
+  componentDidUpdate() {
+    if (this.props.displayed && document.querySelector(".twitter-tweet-container").classList.contains("disabled")) {
+      document.querySelector(".twitter-tweet-container").classList.remove("disabled");
+    }
+  }
 
   render() {
       return (
-        <div className="twitter-tweet-container"></div>
+        <div className="twitter-tweet-container disabled"></div>
       );
   }
 }

@@ -12,6 +12,7 @@ import TweetHidden from './TweetHidden';
 import MultipleChoice from './MultipleChoice';
 import TweetEmbed from './TweetEmbed';
 import TweetsBank from './TweetsBank';
+import EmotesLayer from './EmotesLayer';
 import Fade from 'react-reveal/Fade';
 import Slide from 'react-reveal/Slide';
 import Rotate from 'react-reveal/Rotate';
@@ -37,14 +38,16 @@ export class App extends React.Component {
         "Pokimane",
         "xQc",
         "Sodapoppin",
-        "???"
+        "MoistCr1TiKaL"
       ]
       this.currentChoices = []
       this.tweetsBank = TweetsBank;
       this.tweetAttr = null;
+      this.answer = null;
   }
   
   startGame() {
+    this.removeGifBg()
     this.getTweet();
     this.getChoices(this.tweetAttr["name"]);
     this.setState({
@@ -70,7 +73,16 @@ export class App extends React.Component {
     });
   }
 
+  addGifBg() {
+    document.querySelector("html").classList.add(this.answer);
+  }
+
+  removeGifBg() {
+    document.querySelector("html").classList.remove(this.answer);
+  }
+
   endGame() {
+    this.addGifBg()
     this.setState(prevState => ({
       currentPage: "gameOver",
       prevHighScore: Math.max(prevState.currHighScore, prevState.prevHighScore)
@@ -124,7 +136,7 @@ export class App extends React.Component {
         this.startNextRound();
       }, {once: true})
     } else {
-      // handle Game Over
+      this.answer = answer;
     }
     var choiceElems = document.querySelectorAll(".choice");
     choiceElems.forEach((el) => {
@@ -172,8 +184,8 @@ export class App extends React.Component {
               <Prompt guessed={this.state.guessed} correct={this.state.correct} />
           </Slide>
               <div id="tweet-placeholder">
-                  <Rotate top left when={this.state.guessed} duration={750}>
-                    <TweetEmbed show={this.state.guessed} />
+                  <Rotate top left when={this.state.guessed} duration={750} style={{background: "none !important"}}>
+                    <TweetEmbed displayed={this.state.guessed} />
                   </Rotate>
               <Slide right when={!this.state.guessed} appear={true}>
               <TweetHidden text={this.tweetAttr["text"]} datetime={this.tweetAttr["datetime"]} displayed={!this.state.guessed} />
@@ -203,6 +215,7 @@ export class App extends React.Component {
   render() {
     return (
       <div id="container">
+        <EmotesLayer currentPage={this.state.currentPage} guessed={this.state.guessed} correct={this.state.correct} />
         {this.renderPage()}
       </div>
     )}

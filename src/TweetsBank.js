@@ -49,30 +49,31 @@ var TweetsBank = {
         "text": "MASTERCHEF IS ONE OF THE MOST ENTERTAINING PIECE OF CONTENT I'VE BINGED IN THE LONGEST TIME AND ALL I EAT IS FAST FOOD, BOOGERS AND TOENAILS. EXPLAIN?",
         "datetime": "3:51 AM · Dec 11, 2021"
     },
-    "1462843918601519105": {
+    "1449185569754415105": {
         "name": "Pokimane",
-        "text": "people have a lot of opinions on stans, but it’s undeniable that they’ve made the gaming & internet sphere more inclusive for women, lgbtq+ people, and POC. and i’m v v v grateful for that",
-        "datetime": "10:02 AM · Nov 22, 2021"
+        "text": "sprite is god tier soda",
+        "datetime": "6:28 PM · Oct 15, 2021"
     },
     "1451288036998737925": {
         "name": "Pokimane",
         "text": "clout is one helluva drug",
         "datetime": "1:43 PM · Oct 21, 2021"
     },
-    "1445799237774573568": {
+    "1425186378510331904": {
         "name": "Pokimane",
-        "text": "i capped my donations a year ago since i'm now at a point where sponsors, investments, and exclusive contracts can sustain me. transparently, subs + stream ads are the lowest part of my income and i want you guys to continue keeping that money in your pocket. TREAT YOURSELVES ☺️",
-        "datetime": "10:12 AM · Oct 6, 2021"
+        "text": "homeless but without the m 😔",
+        "datetime": "1:04 PM · Aug 10, 2021"
     },
-    "1434598778321838080": {
+    "1410323480919166978": {
         "name": "Pokimane",
-        "text": "my favorite thing to do in canada is drink tap water 😌",
-        "datetime": "12:26 PM · Sep 5, 2021"
+        "text": "kinda miss fortnite..",
+        "datetime": "12:44 PM · Jun 30, 2021"
     },
-    "1428512691459563523": {
+    "1419350369843388419": {
         "name": "Pokimane",
-        "text": "if you hate me so much, why are you watching my stream for 5 hours straight? 👁️👄👁️",
-        "datetime": "5:22 PM · Aug 19, 2021"
+        "text": "twitter is a dating app lol",
+        "datetime": "10:34 AM · Jul 25, 2021"
+    },
     "1470126225062608900": {
         "name": "Sodapoppin",
         "text": "Vtubers are amazing, and ur all a bunch of losers. Ur just jealous i have a QT pie anime GF who appreciates ME. In fact, i have like 8 of them, im subbed & everything, ALL of them love me for who I am and ur jealous. Im living my best life, & u cant tell me wat I CAN and CANT do.",
@@ -147,6 +148,31 @@ var TweetsBank = {
         "name": "Ludwig",
         "text": "I tested a dog collar on myself to see how much they hurt..",
         "datetime": "10:32 PM · Jun 9, 2021"
+    },
+    "1472332036077727747": {
+        "name": "MoistCr1TiKaL",
+        "text": "Still can't believe there's people out there that haven't seen two girls one cup",
+        "datetime": "2:24 PM · Dec 18, 2021"
+    },
+    "1454517198823772162": {
+        "name": "MoistCr1TiKaL",
+        "text": "Roblox has been offline for over 24 hours. God help us",
+        "datetime": "11:34 AM · Oct 30, 2021"
+    },
+    "1448044782257836032": {
+        "name": "MoistCr1TiKaL",
+        "text": "Just heard Smash Mouth broke up. Don't talk to me today, I need some time",
+        "datetime": "2:55 PM · Oct 12, 2021"
+    },
+    "1443961475098415111": {
+        "name": "MoistCr1TiKaL",
+        "text": "Nothing will ever beat coming home from school firing up Halo 2 and hopping on Xbox live and getting told my mom was getting fucked by the whole lobby",
+        "datetime": "8:30 AM · Oct 1, 2021"
+    },
+    "1386407717774925825": {
+        "name": "MoistCr1TiKaL",
+        "text": "Imagine being tall, how embarrassing",
+        "datetime": "12:52 PM · Apr 25, 2021"
     }
 }
 
