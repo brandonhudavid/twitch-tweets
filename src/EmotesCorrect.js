@@ -14,7 +14,7 @@ export class EmotesCorrect extends React.Component {
 
   render() {
       return (
-        <div>
+        <div className="emotes-wrapper">
             <Roll bottom>
                 <img className="emote emote1" src={PogChamp} alt="emote1" />
             </Roll>

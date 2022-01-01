@@ -15,6 +15,27 @@ html {
   transition: 0.5s ease;
 }
 
+@keyframes gradient {
+  0% {
+      background-position: 30% 50%;
+  }
+  50% {
+      background-position: 70% 50%;
+  }
+  100% {
+      background-position: 30% 50%;
+  }
+}
+
+#container {
+  display: inline-block;
+  text-align: center;
+}
+
+#container * {
+  background: none;
+}
+
 .Mizkif {
   background: linear-gradient(
     rgba(0, 0, 0, 0.5), 
@@ -76,34 +97,12 @@ html {
   background-size: cover;
 }
 
-#container {
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-}
-
-#container * {
-  background: none;
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 25% 50%;
-    }
-    50% {
-        background-position: 80% 50%;
-    }
-    100% {
-        background-position: 25% 50%;
-    }
-}
-
 h1, h2, h3 {
   color: white;
 }
 
 h3 {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16pt;
 }
 
@@ -120,7 +119,7 @@ h3 {
 
 #gameOver {
   margin-top: 10vh;
-  display: inline-block;
+  display: block;
   width: 440px;
 }
 
@@ -247,7 +246,14 @@ h3 {
 
 .mc-container {
   margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 680px;
   position: relative;
+}
+
+.mc-row {
+  display: inline-block;
 }
 
 .choice {
@@ -298,7 +304,7 @@ h3 {
 }
 
 #high-score, #score {
-  position: absolute;
+  position: fixed;
   color: white;
   font-size: 16pt;
 }
@@ -362,7 +368,7 @@ h3 {
   position: absolute;
   fill: white;
   top: 40px;
-  right: 280px;
+  right: -80px;
   border-radius: 16px;
   transition: 0.25s ease;
 }
@@ -430,9 +436,7 @@ h3 {
 }
 
 .developer {
-  position: absolute;
-  right: 20px;
-  bottom: 0;
+  margin-top: 240px;
 }
 
 .dev-link {
@@ -442,4 +446,139 @@ h3 {
 
 .dev-link:hover {
   color: #1DA1F2;
+}
+
+@media (max-width: 1200px) {
+  .emote {
+    height: 60px;
+    width: 60px;
+  }
+
+  .emote1, .emote2, .emote3 {
+    left: 60px;
+  }
+
+  .emote4, .emote5, .emote6 {
+    right: 60px;
+  }
+  
+  .emote1 {
+    top: 100px;
+  }
+  
+  .emote2 {
+    top: 325px;
+  }
+  
+  .emote3 {
+    top: 550px;
+  }
+  
+  .emote4 {
+    top: 100px;
+  }
+  
+  .emote5 {
+    top: 325px;
+  }
+  
+  .emote6 {
+    top: 550px;
+  }
+
+  #next-arrow {
+    position: static;
+    display: inline-block;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 900px) and (orientation:portrait) {
+  .choice {
+    display: block;
+    width: 400px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 80px;
+    font-size: 32px;
+    margin: 12px 0;
+  }
+
+  .choice:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  #next-arrow {
+    display: none;
+  }
+
+  #next-arrow-mobile {
+    height: 80px;
+    width: 80px;
+    display: block;
+    fill: white;
+    margin: 40px auto 0 auto;
+    border-radius: 16px;
+    transition: 0.25s ease;
+  }
+  
+  #next-arrow-mobile:hover {
+    cursor: pointer;
+    fill: #acdfff;
+  }
+
+  .emote1, .emote2, .emote3 {
+    left: 60px;
+  }
+
+  .emote4, .emote5, .emote6 {
+    right: 60px;
+  }
+  
+  .emote1 {
+    top: 550px;
+  }
+  
+  .emote2 {
+    top: 675px;
+  }
+  
+  .emote3 {
+    top: 800px;
+  }
+  
+  .emote4 {
+    top: 550px;
+  }
+  
+  .emote5 {
+    top: 675px;
+  }
+  
+  .emote6 {
+    top: 800px;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .emotes-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 20px 0 20px;
+  }
+
+  .emote {
+    position: static;
+  }
+
+  #score {
+    font-size: 80px;
+    bottom: 40px;
+    right: 60px;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
 }

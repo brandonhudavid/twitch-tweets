@@ -143,7 +143,11 @@ export class App extends React.Component {
       tweetId: tweetId
     }, () => {
         // ReactDOM.render(<TweetFake tweetAttr={this.tweetAttr} visible={this.state.guessed}/>, document.querySelector(".twitter-tweet-container"))
-        ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
+        try {
+          ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
+        } catch (e) {
+          console.log("Failed to render embedded tweet:", e)
+        }
     })
     delete this.tweetsBank[tweetId];
   }
@@ -265,8 +269,8 @@ export class App extends React.Component {
   render() {
     return (
       <div id="container">
-        <EmotesLayer currentPage={this.state.currentPage} guessed={this.state.guessed} correct={this.state.correct} />
         {this.renderPage()}
+        <EmotesLayer currentPage={this.state.currentPage} guessed={this.state.guessed} correct={this.state.correct} />
       </div>
     )}
 }

@@ -14,7 +14,7 @@ export class EmotesWaiting extends React.Component {
 
   render() {
       return (
-        <div>
+        <div className="emotes-wrapper">
             <Roll bottom>
                 <img className="emote emote1" src={KEKW} alt="emote1" />
             </Roll>
