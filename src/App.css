@@ -23,8 +23,11 @@ html {
     background-size: cover;
 }
 
-.Hasanabi {
-  background-image: url('./img/gifs/hasanabi.gif');
+.HasanAbi {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/hasanabi.gif');
     background-size: cover;
 }
 
@@ -105,7 +108,7 @@ h3 {
 }
 
 #logo {
-  margin-top: 10vh;
+  margin-top: 6vh;
   width: 500px;
   height: auto;
 }
@@ -162,6 +165,43 @@ h3 {
   visibility: visible;
   opacity: 1;
   transition: 0.5s ease;
+}
+
+.tweet-fake h2 {
+  position: relative;
+  color: black;
+  font-size: 14pt;
+  line-height: 14pt;
+  font-weight: 700;
+  top: 10px;
+}
+
+.tweet-fake h3 {
+  color: gray;
+  font-size: 11pt;
+  font-weight: 500;
+}
+
+.tweet-fake-icon {
+  position: relative;
+  top: 12px;
+  left: 0px;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.tweet-whiteout {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  background-color: white !important;
+}
+
+.icon-placeholder {
+  background-color: rgb(207, 217, 222) !important;
 }
 
 .tweet-container {
@@ -281,15 +321,16 @@ h3 {
   height: 320px;
   line-height: 320px;
   position: relative;
-}
-
-.remove-display {
-  display: none;
+  z-index: 1;
 }
 
 .hide-visibility {
   visibility: hidden;
   opacity: 0;
+}
+
+.hide-display {
+  display: none;
 }
 
 .twitter-tweet-container {
@@ -298,9 +339,15 @@ h3 {
   left: 50%;
   transform: translate(-50%, 0%);
   width: 100%;
-  opacity: 1;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.show-tweet {
+  pointer-events: all;
   visibility: visible;
-  transition: 0.5s ease;
+  opacity: 1;
 }
 
 #gameOverScore {
@@ -327,8 +374,9 @@ h3 {
 
 .emote {
   height: 100px;
-  width: auto;
+  width: 100px;
   position: absolute;
+  filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.25));
 }
 
 .emote1 {
@@ -349,21 +397,49 @@ h3 {
 .emote4 {
   top: 100px;
   right: 60px;
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
 }
 
 .emote5 {
   top: 325px;
   right: 200px;
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
 }
 
 .emote6 {
   top: 550px;
   right: 80px;
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
 }
 
+.streamer {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: 1px solid white;
+  margin: 0;
+}
+
+.streamer1, .streamer3, .streamer5, .streamer7 {
+  margin-bottom: 100px;
+}
+
+.streamer2, .streamer4, .streamer6, .streamer8 {
+  margin-top: 100px;
+}
+
+.streamers-container {
+  margin-top: 40px;
+}
+
+.developer {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+}
+
+.dev-link {
+  font-weight: 700;
+  color: white;
+}
+
+.dev-link:hover {
+  color: #1DA1F2;
+}

@@ -11,8 +11,10 @@ import Prompt from "./Prompt";
 import TweetHidden from './TweetHidden';
 import MultipleChoice from './MultipleChoice';
 import TweetEmbed from './TweetEmbed';
+import TweetFake from './TweetFake';
 import TweetsBank from './TweetsBank';
 import EmotesLayer from './EmotesLayer';
+import StreamersLayer from './StreamersLayer';
 import Fade from 'react-reveal/Fade';
 import Slide from 'react-reveal/Slide';
 import Rotate from 'react-reveal/Rotate';
@@ -21,13 +23,21 @@ import { TwitterTweetEmbed } from 'react-twitter-embed';
 export class App extends React.Component {
   constructor(props) {
       super(props);
+      console.log("app constructed");
+      if (!localStorage.getItem("highScore")) {
+        localStorage.setItem("highScore", 0)
+      }
+      if (!localStorage.getItem("firstGame")) {
+        localStorage.setItem("firstGame", "true")
+      }
       this.state = {
         currentPage: "landing",
         guessed: false,
         correct: false,
         score: 0,
-        prevHighScore: 0,
+        prevHighScore: localStorage.getItem("highScore") || 0,
         currHighScore: 0,
+        endState: "default",
         tweetId: null
       }
       this.choices = [
@@ -49,7 +59,7 @@ export class App extends React.Component {
   startGame() {
     this.removeGifBg()
     this.getTweet();
-    this.getChoices(this.tweetAttr["name"]);
+    this.getChoices(this.tweetAttr);
     this.setState({
       currentPage: "game",
       guessed: false,
@@ -66,7 +76,7 @@ export class App extends React.Component {
       el.classList.add("choice-default");
     })
     this.getTweet();
-    this.getChoices(this.tweetAttr["name"]);
+    this.getChoices(this.tweetAttr);
     this.setState({
       guessed: false,
       correct: false,
@@ -81,11 +91,39 @@ export class App extends React.Component {
     document.querySelector("html").classList.remove(this.answer);
   }
 
+  endGameFlavorText() {
+    if (localStorage.getItem("firstGame") == "true") {
+      localStorage.setItem("firstGame", "false")
+      if (this.state.score > 2) {
+        return ["Hey, not bad for your first go...","Run it back?"]
+      } else {
+        return ["... Well, it was your first go.", "Let's try that again."]
+      }
+    }
+    if (this.state.score == 0) {
+      return ["... Really düd? 0?","Run that back."]
+    }
+    if (this.state.currHighScore > this.state.prevHighScore) {
+      return ["New high score! Pog Pog PogU","Run it back?"]
+    }
+    if (this.state.score >= 10) {
+      return ["Congrats, you're a parasocial Andy!","Go agane?"]
+    }
+    if (this.state.score >= 7) {
+      return ["Wow, you're a diehard LSF frog!","Run it back?"]
+    }
+    if (this.state.score >= 4) {
+      return ["Not bad... but not great.","Can you do better?"]
+    }
+    return ["You can do better than that.","Go again."];
+  }
+
   endGame() {
     this.addGifBg()
     this.setState(prevState => ({
       currentPage: "gameOver",
-      prevHighScore: Math.max(prevState.currHighScore, prevState.prevHighScore)
+      prevHighScore: Math.max(prevState.currHighScore, prevState.prevHighScore),
+      flavorText: this.endGameFlavorText()
     }))
   }
 
@@ -104,19 +142,31 @@ export class App extends React.Component {
     this.setState({
       tweetId: tweetId
     }, () => {
-      ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
+        // ReactDOM.render(<TweetFake tweetAttr={this.tweetAttr} visible={this.state.guessed}/>, document.querySelector(".twitter-tweet-container"))
+        ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
     })
     delete this.tweetsBank[tweetId];
   }
 
-  getChoices(answer) {
-      var fourChoices = []
+  getChoices(tweetAttr) {
+      var fourChoices = [];
       var choicesClone = this.choices.slice();
-      choicesClone.splice(choicesClone.indexOf(answer), 1);
+      choicesClone.splice(choicesClone.indexOf(tweetAttr["name"]), 1);
+      if ("bait" in tweetAttr) {
+        choicesClone.splice(choicesClone.indexOf(tweetAttr["bait"]), 1);
+      }
       var answerIndex = this.getRandomInt(4);
+      var baitIndex = -1;
+      if ("bait" in tweetAttr) {
+        while (baitIndex < 0 || baitIndex == answerIndex) {
+          baitIndex = this.getRandomInt(4);
+        }
+      }
       while (fourChoices.length < 4) {
         if (fourChoices.length == answerIndex) {
-          fourChoices.push(answer)
+          fourChoices.push(tweetAttr["name"])
+        } else if (fourChoices.length == baitIndex) {
+          fourChoices.push(tweetAttr["bait"])
         } else {
           var spliced = choicesClone.splice(this.getRandomInt(choicesClone.length), 1)
           fourChoices.push(spliced[0]);
@@ -137,6 +187,9 @@ export class App extends React.Component {
       }, {once: true})
     } else {
       this.answer = answer;
+      if (!localStorage.getItem("highScore") || localStorage.getItem("highScore") < this.state.currHighScore) {
+        localStorage.setItem("highScore", this.state.currHighScore);
+      }
     }
     var choiceElems = document.querySelectorAll(".choice");
     choiceElems.forEach((el) => {
@@ -150,11 +203,6 @@ export class App extends React.Component {
         el.classList.remove("choice-default");
       }
     })
-    this.replaceHiddenTweet()
-  }
-  
-
-  replaceHiddenTweet() {
     this.setState({
       guessed: true
     })
@@ -174,12 +222,13 @@ export class App extends React.Component {
             <Fade bottom delay={600} duration={500}>
               <CtaPrimary text="Start" onClick={() => this.startGame()}/>
             </Fade>
+            <StreamersLayer />
           </div>
       );
       case "game":
         return (
           <div>
-          <span id="high-score">High score: {this.state.currHighScore}</span>
+          <span id="high-score">High score: {Math.max(this.state.currHighScore, this.state.prevHighScore)}</span>
           <Slide right>
               <Prompt guessed={this.state.guessed} correct={this.state.correct} />
           </Slide>
@@ -200,10 +249,11 @@ export class App extends React.Component {
       case "gameOver":
         return (
           <div>
-            <span id="high-score">High score: {this.state.currHighScore}</span>
+            <span id="high-score">High score: {Math.max(this.state.currHighScore, this.state.prevHighScore)}</span>
             <Slide right>
-            <GameOver score={this.state.score} />
+            <GameOver score={this.state.score} flavorText={this.state.flavorText} />
             <CtaPrimary text="Play again" onClick={() => this.startGame()}/>
+            <h3 className="developer">developed by <a className="dev-link" href="https://twitter.com/bdiddydavid" target="_blank">@bdiddydavid</a></h3>
           </Slide>
           </div>
         );

@@ -7,16 +7,16 @@ export class TweetHidden extends React.Component {
 
   componentDidUpdate() {
       if (!this.props.displayed) {
-          document.querySelector(".tweet-card").classList.add("hide-visibility");
+          document.querySelector(".tweet-hidden").classList.add("hide-visibility");
       }
       if (this.props.displayed) {
-        document.querySelector(".tweet-card").classList.remove("hide-visibility");
+        document.querySelector(".tweet-hidden").classList.remove("hide-visibility");
     }
   }
 
   render() {
       return (
-        <div className="tweet-card">
+        <div className="tweet-card tweet-hidden">
             <div className="tweet-container">
                 <span className="pfp-hidden"></span>
                 <div className="handle-container">
