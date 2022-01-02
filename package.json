@@ -8,6 +8,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "gh-pages": "^3.2.3",
+    "lodash": "^4.17.21",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-reveal": "^1.2.2",

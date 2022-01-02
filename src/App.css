@@ -7,7 +7,6 @@
 
 html {
   height: 100%;
-  width: 100%;
   background: linear-gradient(-45deg, #ff41a9, #6441A5, #1DA1F2, #007f88);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
@@ -30,6 +29,7 @@ html {
 #container {
   display: inline-block;
   text-align: center;
+  width: 100%;
 }
 
 #container * {
@@ -118,7 +118,7 @@ h3 {
 }
 
 #gameOver {
-  margin-top: 10vh;
+  margin: 10vh auto 0 auto;
   display: block;
   width: 440px;
 }
@@ -150,17 +150,16 @@ h3 {
 }
 
 .tweet-card {
-  display: inline-block;
-  vertical-align: middle;
   line-height: normal;
-  width: 600px;
+  width: 90%;
+  max-width: 600px;
   background-color: white !important;
   border-radius: 10px;
   border: rgb(207, 217, 222) solid 2px;
   position: absolute;
   top: 0%;
   left: 50%;
-  transform: translate(-50%, 10%);
+  transform: translate(-50%, 0%);
   visibility: visible;
   opacity: 1;
   transition: 0.5s ease;
@@ -245,10 +244,11 @@ h3 {
 }
 
 .mc-container {
+  width: 100%;
+  max-width: 680px;
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
-  width: 680px;
   position: relative;
 }
 
@@ -323,7 +323,12 @@ h3 {
   right: 60px;
 }
 
+#score-mobile {
+  display: none;
+}
+
 #tweet-placeholder {
+  overflow: hidden;
   height: 320px;
   line-height: 320px;
   position: relative;
@@ -448,6 +453,25 @@ h3 {
   color: #1DA1F2;
 }
 
+#alert-container {
+  position: fixed;
+  bottom:  40px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#alert-reload {
+  display: inline-block;
+  background-color: white !important;
+  border: 2px solid red;
+  border-radius: 10px;
+  color: red;
+  padding: 12px 20px;
+  font-weight: 500;
+  filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.25));
+}
+
 @media (max-width: 1200px) {
   .emote {
     height: 60px;
@@ -467,11 +491,11 @@ h3 {
   }
   
   .emote2 {
-    top: 325px;
+    top: 250px;
   }
   
   .emote3 {
-    top: 550px;
+    top: 400px;
   }
   
   .emote4 {
@@ -479,17 +503,42 @@ h3 {
   }
   
   .emote5 {
-    top: 325px;
+    top: 250px;
   }
   
   .emote6 {
-    top: 550px;
+    top: 400px;
   }
 
   #next-arrow {
     position: static;
     display: inline-block;
     margin-top: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  #emotes-landing {
+    display: none;
+  }
+
+  .streamers-container {
+    width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .streamer {
+    height: 80px;
+    width: 80px;
+  }
+
+  .streamer7 {
+    margin: 0 80px -80px 80px;
+  }
+
+  .streamer8 {
+    margin: 0 0 -80px 0;
   }
 }
 
@@ -509,22 +558,10 @@ h3 {
   }
 
   #next-arrow {
-    display: none;
-  }
-
-  #next-arrow-mobile {
     height: 80px;
     width: 80px;
     display: block;
-    fill: white;
     margin: 40px auto 0 auto;
-    border-radius: 16px;
-    transition: 0.25s ease;
-  }
-  
-  #next-arrow-mobile:hover {
-    cursor: pointer;
-    fill: #acdfff;
   }
 
   .emote1, .emote2, .emote3 {
@@ -562,23 +599,125 @@ h3 {
 }
 
 @media (max-width: 600px) {
+  body {
+    position: absolute;
+    width: 100vw;
+  }
+
+  #logo {
+    width: 80%;
+  }
+
+  #landing, #game {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #gameOver {
+    width: 90%;
+  }
+
+  .tweet-text, .tweet-datetime {
+    font-size: 12pt;
+  }
+  
+  .handle-hidden {
+    width: 120px;
+  }
+
+  .mc-container {
+    margin-top: 20px;
+  }
+
+  .mc-row {
+    display: block;
+  }
+
+  .streamers-container {
+    width: 320px;
+  }
+
+  .streamer {
+    height: 64px;
+    width: 64px;
+  }
+
+  .streamer1, .streamer3, .streamer5, .streamer7 {
+    margin-bottom: 60px;
+  }
+
+  .streamer2, .streamer4, .streamer6, .streamer8 {
+    margin-top: 60px;
+  }
+
+  .streamer7 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .streamer8 {
+    margin-bottom: 0;
+  }
+
+  .choice {
+    display: inline-block;
+    width: 40%;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 80px;
+    font-size: 14px;
+    margin: 4px 12px;
+  }
+
+  .choice:not(:last-child) {
+    margin-bottom: 12px;
+  }
+
+  #next-arrow {
+    height: 40px;
+    width: 40px;
+    margin: 8px auto 0 auto;
+  }
+
   .emotes-wrapper {
     display: flex;
     justify-content: space-between;
-    margin: 20px 20px 0 20px;
+    margin: 20px 12px 0 12px;
   }
 
   .emote {
+    height: 40px;
+    width: 40px;
     position: static;
   }
 
+  #game-prompt {
+    font-size: 10pt;
+    margin: 12vh 0 12px 0;
+  }
+
   #score {
-    font-size: 80px;
-    bottom: 40px;
-    right: 60px;
-    z-index: 1;
-    left: 0;
-    right: 0;
-    margin: auto;
+    display: none;
+  }
+  
+  #score-mobile {
+    display: block;
+    position: fixed;
+    top: 28px;
+    left: 16px;
+    color: white;
+    font-size: 16pt;
+    font-weight: 700;
+  }
+
+  #high-score {
+    left: 16px;
+    font-size: 8pt;
+    font-weight: 500;
+  }
+
+  .developer {
+    margin-top: 100px;
+    font-size: 14pt;
   }
 }

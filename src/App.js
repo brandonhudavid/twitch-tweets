@@ -15,6 +15,7 @@ import TweetFake from './TweetFake';
 import TweetsBank from './TweetsBank';
 import EmotesLayer from './EmotesLayer';
 import StreamersLayer from './StreamersLayer';
+import cloneDeep from 'lodash/cloneDeep';
 import Fade from 'react-reveal/Fade';
 import Slide from 'react-reveal/Slide';
 import Rotate from 'react-reveal/Rotate';
@@ -51,7 +52,7 @@ export class App extends React.Component {
         "MoistCr1TiKaL"
       ]
       this.currentChoices = []
-      this.tweetsBank = TweetsBank;
+      this.tweetsBank = cloneDeep(TweetsBank);
       this.tweetAttr = null;
       this.answer = null;
   }
@@ -136,13 +137,25 @@ export class App extends React.Component {
     if (prevTweet) {
       ReactDOM.unmountComponentAtNode(prevTweet);
     }
+    if (Object.keys(this.tweetsBank).length <= 0) {
+      this.tweetsBank = cloneDeep(TweetsBank);
+      ReactDOM.render(
+        <Fade bottom>
+          <div id="alert-reload">
+            You will start seeing reused tweets.
+          </div>
+        </Fade>
+      , document.querySelector("#alert-container"));
+      setTimeout(() => {
+        ReactDOM.unmountComponentAtNode(document.querySelector("#alert-container"));
+      }, 5000)
+    }
     var bankKeys = Object.keys(this.tweetsBank);
     var tweetId = bankKeys[this.getRandomInt(bankKeys.length)];
     this.tweetAttr = this.tweetsBank[tweetId];
     this.setState({
       tweetId: tweetId
     }, () => {
-        // ReactDOM.render(<TweetFake tweetAttr={this.tweetAttr} visible={this.state.guessed}/>, document.querySelector(".twitter-tweet-container"))
         try {
           ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
         } catch (e) {
@@ -233,20 +246,23 @@ export class App extends React.Component {
         return (
           <div>
           <span id="high-score">High score: {Math.max(this.state.currHighScore, this.state.prevHighScore)}</span>
-          <Slide right>
-              <Prompt guessed={this.state.guessed} correct={this.state.correct} />
-          </Slide>
+          <span id="score-mobile">Score: {this.state.score}</span>
+          <div id="game">
+            <Slide right>
+                <Prompt guessed={this.state.guessed} correct={this.state.correct} />
+            </Slide>
               <div id="tweet-placeholder">
                   <Rotate top left when={this.state.guessed} duration={750} style={{background: "none !important"}}>
                     <TweetEmbed displayed={this.state.guessed} />
                   </Rotate>
-              <Slide right when={!this.state.guessed} appear={true}>
+              <Slide right when={!this.state.guessed} collapse appear={true}>
               <TweetHidden text={this.tweetAttr["text"]} datetime={this.tweetAttr["datetime"]} displayed={!this.state.guessed} />
               </Slide>
               </div>
               <Slide right>
               <MultipleChoice choices={this.currentChoices} onClick={(selected) => this.checkAnswer(selected, this.tweetAttr["name"])} guessed={this.state.guessed} nextArrow={() => this.state.correct ? this.startNextRound() : this.endGame()}/>
               </Slide>
+            </div>
           <span id="score">Score: {this.state.score}</span>
           </div>
       );
@@ -269,6 +285,7 @@ export class App extends React.Component {
   render() {
     return (
       <div id="container">
+        <div id="alert-container"></div>
         {this.renderPage()}
         <EmotesLayer currentPage={this.state.currentPage} guessed={this.state.guessed} correct={this.state.correct} />
       </div>
