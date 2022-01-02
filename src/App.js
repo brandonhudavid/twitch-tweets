@@ -68,9 +68,11 @@ export class App extends React.Component {
       guessed: false,
       score: 0,
     }, () => {
-      // Render Twitter embed after state change
       try {
-        ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
+        // Render Twitter embed after state change
+        setTimeout(() => {
+          ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
+        }, 1000)
       } catch (e) {
         console.log("Failed to render embedded tweet:", e)
       }
@@ -94,7 +96,9 @@ export class App extends React.Component {
     }, () => {
       try {
         // Render Twitter embed after state change
-        ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
+        setTimeout(() => {
+          ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
+        }, 1000)
       } catch (e) {
         console.log("Failed to render embedded tweet:", e)
       }

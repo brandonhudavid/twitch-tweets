@@ -264,7 +264,6 @@ h3 {
 }
 
 .choice-default {
-  outline: #1DA1F2 solid 2px;
   color: #1DA1F2;
   background-color: white !important;
 }
@@ -275,19 +274,16 @@ h3 {
 }
 
 .choice-default:active {
-  outline: #168eda solid 2px;
   background-color: #168eda !important;
 }
 
 .choice-wrong {
   background-color: #c40000 !important;
-  outline: #c40000 solid 2px;
   color: white;
 }
 
 .choice-correct {
   background-color: #00a743 !important;
-  outline: #00a743 solid 2px;
   color: white;
 }
 
