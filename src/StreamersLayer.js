@@ -1,12 +1,12 @@
 import React from 'react';
-import ludwig from './img/streamers/ludwig.png';
-import sodapoppin from './img/streamers/sodapoppin.png';
-import xqc from './img/streamers/xqc.jpeg';
-import charlie from './img/streamers/charlie.png';
-import mizkif from './img/streamers/mizkif.png';
-import pokimane from './img/streamers/pokimane.png';
-import hasanabi from './img/streamers/hasanabi.png';
-import sykkuno from './img/streamers/sykkuno.png';
+import ludwig from './img/streamers/ludwig.jpg';
+import sodapoppin from './img/streamers/sodapoppin.jpg';
+import xqc from './img/streamers/xqc.jpg';
+import charlie from './img/streamers/charlie.jpg';
+import mizkif from './img/streamers/mizkif.jpg';
+import pokimane from './img/streamers/pokimane.jpg';
+import hasanabi from './img/streamers/hasanabi.jpg';
+import sykkuno from './img/streamers/sykkuno.jpg';
 import Flip from 'react-reveal/Flip';
 
 export class EmotesLayer extends React.Component {
