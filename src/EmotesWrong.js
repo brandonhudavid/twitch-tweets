@@ -16,22 +16,40 @@ export class EmotesWaiting extends React.Component {
       return (
         <div className="emotes-wrapper">
             <Roll bottom>
-                <img className="emote emote1" src={KEKW} alt="emote1" />
+                <div className="tooltip tooltip1">
+                    <img className="emote emote1" src={KEKW} alt="emote1" />
+                    <span className="tooltiptext tooltiptext1">KEKW</span>
+                </div>
             </Roll>
             <Roll bottom delay={200}>
+            <div className="tooltip tooltip2">
                 <img className="emote emote2" src={OMEGALUL} alt="emote2" />
+                <span className="tooltiptext tooltiptext2">OMEGALUL</span>
+                </div>
             </Roll>
             <Roll bottom delay={400}>
+            <div className="tooltip tooltip3">
                 <img className="emote emote3" src={LULW} alt="emote3" />
+                <span className="tooltiptext tooltiptext3">LULW</span>
+                </div>
             </Roll>
             <Roll bottom delay={1000}>
+            <div className="tooltip tooltip4">
                 <img className="emote emote4" src={LULW2} alt="emote4" />
+                <span className="tooltiptext tooltiptext4">LULW</span>
+                </div>
             </Roll>
             <Roll bottom delay={800}>
+            <div className="tooltip tooltip5">
                 <img className="emote emote5" src={KEKW2} alt="emote5" />
+                <span className="tooltiptext tooltiptext5">KEKW</span>
+                </div>
             </Roll>
             <Roll bottom delay={600}>
+            <div className="tooltip tooltip6">
                 <img className="emote emote6" src={OMEGALUL2} alt="emote6" />
+                <span className="tooltiptext tooltiptext6">OMEGALUL</span>
+                </div>
             </Roll>
         </div>
       );

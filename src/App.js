@@ -4,6 +4,7 @@ import './App.css';
 import Zoom from 'react-reveal/Zoom';
 import Flip from 'react-reveal/Flip';
 import logo from './img/twitchtweets_logo.png';
+import TwitterLogo from './img/twitter_logo.png';
 import Landing from "./Landing";
 import GameOver from "./GameOver";
 import CtaPrimary from "./CtaPrimary";
@@ -11,7 +12,6 @@ import Prompt from "./Prompt";
 import TweetHidden from './TweetHidden';
 import MultipleChoice from './MultipleChoice';
 import TweetEmbed from './TweetEmbed';
-import TweetFake from './TweetFake';
 import TweetsBank from './TweetsBank';
 import EmotesLayer from './EmotesLayer';
 import StreamersLayer from './StreamersLayer';
@@ -20,11 +20,12 @@ import Fade from 'react-reveal/Fade';
 import Slide from 'react-reveal/Slide';
 import Rotate from 'react-reveal/Rotate';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
+import { TwitterShareButton, TwitterIcon } from "react-share";
 
 export class App extends React.Component {
   constructor(props) {
       super(props);
-      console.log("app constructed");
+      // Local storage for high score and first game
       if (!localStorage.getItem("highScore")) {
         localStorage.setItem("highScore", 0)
       }
@@ -41,6 +42,7 @@ export class App extends React.Component {
         endState: "default",
         tweetId: null
       }
+      // Streamers
       this.choices = [
         "Mizkif",
         "HasanAbi",
@@ -65,10 +67,18 @@ export class App extends React.Component {
       currentPage: "game",
       guessed: false,
       score: 0,
-    });
+    }, () => {
+      // Render Twitter embed after state change
+      try {
+        ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
+      } catch (e) {
+        console.log("Failed to render embedded tweet:", e)
+      }
+  });
   }
 
   startNextRound() {
+    // Make all choices default again
     var choiceElems = document.querySelectorAll(".choice");
     choiceElems.forEach((el) => {
       el.classList.remove("disabled");
@@ -81,10 +91,18 @@ export class App extends React.Component {
     this.setState({
       guessed: false,
       correct: false,
-    });
+    }, () => {
+      try {
+        // Render Twitter embed after state change
+        ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
+      } catch (e) {
+        console.log("Failed to render embedded tweet:", e)
+      }
+  });
   }
 
   addGifBg() {
+    // For end of game
     document.querySelector("html").classList.add(this.answer);
   }
 
@@ -133,10 +151,12 @@ export class App extends React.Component {
   }
 
   getTweet() {
+    // Unmount previous embedded tweet component
     let prevTweet = document.querySelector(".twitter-tweet-container");
     if (prevTweet) {
       ReactDOM.unmountComponentAtNode(prevTweet);
     }
+    // If TweetBank has no more tweets
     if (Object.keys(this.tweetsBank).length <= 0) {
       this.tweetsBank = cloneDeep(TweetsBank);
       ReactDOM.render(
@@ -155,19 +175,15 @@ export class App extends React.Component {
     this.tweetAttr = this.tweetsBank[tweetId];
     this.setState({
       tweetId: tweetId
-    }, () => {
-        try {
-          ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
-        } catch (e) {
-          console.log("Failed to render embedded tweet:", e)
-        }
     })
     delete this.tweetsBank[tweetId];
   }
 
   getChoices(tweetAttr) {
+    // Select 4 names for the multiple choice
       var fourChoices = [];
       var choicesClone = this.choices.slice();
+      // Remove answer and bait from pool of choices
       choicesClone.splice(choicesClone.indexOf(tweetAttr["name"]), 1);
       if ("bait" in tweetAttr) {
         choicesClone.splice(choicesClone.indexOf(tweetAttr["bait"]), 1);
@@ -204,10 +220,12 @@ export class App extends React.Component {
       }, {once: true})
     } else {
       this.answer = answer;
+      // Set high score to local storage
       if (!localStorage.getItem("highScore") || localStorage.getItem("highScore") < this.state.currHighScore) {
         localStorage.setItem("highScore", this.state.currHighScore);
       }
     }
+    // Reveal correct/wrong choices
     var choiceElems = document.querySelectorAll(".choice");
     choiceElems.forEach((el) => {
       el.classList.add("disabled");
@@ -252,12 +270,14 @@ export class App extends React.Component {
                 <Prompt guessed={this.state.guessed} correct={this.state.correct} />
             </Slide>
               <div id="tweet-placeholder">
+                <div>
                   <Rotate top left when={this.state.guessed} duration={750} style={{background: "none !important"}}>
                     <TweetEmbed displayed={this.state.guessed} />
                   </Rotate>
-              <Slide right when={!this.state.guessed} collapse appear={true}>
-              <TweetHidden text={this.tweetAttr["text"]} datetime={this.tweetAttr["datetime"]} displayed={!this.state.guessed} />
-              </Slide>
+                <Slide right when={!this.state.guessed} collapse appear={true}>
+                  <TweetHidden text={this.tweetAttr["text"]} datetime={this.tweetAttr["datetime"]} displayed={!this.state.guessed} />
+                </Slide>
+              </div>
               </div>
               <Slide right>
               <MultipleChoice choices={this.currentChoices} onClick={(selected) => this.checkAnswer(selected, this.tweetAttr["name"])} guessed={this.state.guessed} nextArrow={() => this.state.correct ? this.startNextRound() : this.endGame()}/>
@@ -273,6 +293,12 @@ export class App extends React.Component {
             <Slide right>
             <GameOver score={this.state.score} flavorText={this.state.flavorText} />
             <CtaPrimary text="Play again" onClick={() => this.startGame()}/>
+            <TwitterShareButton
+									url='https://brandonhudavid.com/twitch-tweets-prod/'
+									title={"I scored " + this.state.score + " in Twitch Tweets! How well do you know these Twitch streamers?"}
+									hashtags={["TwitchTweets"]}>
+                    <div className="twitter-btn"><img className="twitter-logo" src={TwitterLogo} alt="Twitter logo"/>Tweet</div>
+            </TwitterShareButton>
             <h3 className="developer">developed by <a className="dev-link" href="https://twitter.com/bdiddydavid" target="_blank">@bdiddydavid</a></h3>
           </Slide>
           </div>

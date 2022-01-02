@@ -190,14 +190,6 @@ h3 {
   border: 1px solid white;
 }
 
-.tweet-whiteout {
-  position: absolute;
-  z-index: 1;
-  height: 100%;
-  width: 100%;
-  background-color: white !important;
-}
-
 .icon-placeholder {
   background-color: rgb(207, 217, 222) !important;
 }
@@ -332,7 +324,6 @@ h3 {
   height: 320px;
   line-height: 320px;
   position: relative;
-  z-index: 1;
 }
 
 .hide-visibility {
@@ -383,6 +374,10 @@ h3 {
   fill: #acdfff;
 }
 
+.emotes-wrapper {
+  width: 100%;
+}
+
 .emote {
   height: 100px;
   width: 100px;
@@ -390,34 +385,53 @@ h3 {
   filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.25));
 }
 
-.emote1 {
-  top: 100px;
-  left: 60px;
+.tooltip {
+  position: absolute;
 }
 
-.emote2 {
-  top: 325px;
-  left: 200px;
+.tooltip1 { top: 100px; left: 60px; }
+.tooltip2 { top: 325px; left: 200px; }
+.tooltip3 { top: 550px; left: 80px; }
+.tooltip4 { top: 100px; right: 160px; }
+.tooltip5 { top: 325px; right: 300px; }
+.tooltip6 { top: 550px; right: 180px; }
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: white !important;
+  color: black;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 6px;
+  padding: 6px 0;
+
+  position: absolute;
+  bottom: 200%;
+  left: 50%;
+  z-index: 1;
+  margin-left: -10px;
+  margin-bottom: 6px;
 }
 
-.emote3 {
-  top: 550px;
-  left: 80px;
+.tooltip1:hover .tooltiptext1,
+.tooltip2:hover .tooltiptext2,
+.tooltip3:hover .tooltiptext3,
+.tooltip4:hover .tooltiptext4,
+.tooltip5:hover .tooltiptext5,
+.tooltip6:hover .tooltiptext6 {
+  visibility: visible;
 }
 
-.emote4 {
-  top: 100px;
-  right: 60px;
-}
-
-.emote5 {
-  top: 325px;
-  right: 200px;
-}
-
-.emote6 {
-  top: 550px;
-  right: 80px;
+.tooltiptext:before {
+  content: '';
+  height: 0;
+  position: absolute;
+  width: 0;
+  top: 30px;
+  left: 50px;
+  border: 8px solid transparent;
+  border-top-color: white;
 }
 
 .streamer {
@@ -472,43 +486,46 @@ h3 {
   filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.25));
 }
 
+.twitter-btn {
+  background-color: #1DA1F2 !important;
+  color: white;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-weight: 700;
+}
+
+.twitter-logo {
+  height: 16px;
+  width: auto;
+  transform: translateY(2px);
+  padding-right: 6px;
+}
+
 @media (max-width: 1200px) {
   .emote {
     height: 60px;
     width: 60px;
   }
 
-  .emote1, .emote2, .emote3 {
+  .tooltip .tooltiptext {
+    margin-left: -28px;
+  }
+
+  .tooltip1, .tooltip2, .tooltip3 {
     left: 60px;
   }
 
-  .emote4, .emote5, .emote6 {
-    right: 60px;
+  .tooltip4, .tooltip5, .tooltip6 {
+    right: 120px;
   }
   
-  .emote1 {
-    top: 100px;
-  }
-  
-  .emote2 {
-    top: 250px;
-  }
-  
-  .emote3 {
-    top: 400px;
-  }
-  
-  .emote4 {
-    top: 100px;
-  }
-  
-  .emote5 {
-    top: 250px;
-  }
-  
-  .emote6 {
-    top: 400px;
-  }
+  .tooltip1 { top: 100px; }
+  .tooltip2 { top: 250px; }
+  .tooltip3 { top: 400px; }
+  .tooltip4 { top: 100px; }
+  .tooltip5 { top: 250px; }
+  .tooltip6 { top: 400px; }
 
   #next-arrow {
     position: static;
@@ -518,10 +535,6 @@ h3 {
 }
 
 @media (max-width: 900px) {
-  #emotes-landing {
-    display: none;
-  }
-
   .streamers-container {
     width: 580px;
     margin-left: auto;
@@ -564,37 +577,20 @@ h3 {
     margin: 40px auto 0 auto;
   }
 
-  .emote1, .emote2, .emote3 {
+  .tooltip1, .tooltip2, .tooltip3 {
     left: 60px;
   }
 
-  .emote4, .emote5, .emote6 {
-    right: 60px;
+  .tooltip4, .tooltip5, .tooltip6 {
+    right: 140px;
   }
   
-  .emote1 {
-    top: 550px;
-  }
-  
-  .emote2 {
-    top: 675px;
-  }
-  
-  .emote3 {
-    top: 800px;
-  }
-  
-  .emote4 {
-    top: 550px;
-  }
-  
-  .emote5 {
-    top: 675px;
-  }
-  
-  .emote6 {
-    top: 800px;
-  }
+  .tooltip1 { top: 550px; }
+  .tooltip2 { top: 675px; }
+  .tooltip3 { top: 800px; }
+  .tooltip4 { top: 550px; }
+  .tooltip5 { top: 675px; }
+  .tooltip6 { top: 800px; }
 
 }
 
@@ -680,15 +676,7 @@ h3 {
   }
 
   .emotes-wrapper {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 12px 0 12px;
-  }
-
-  .emote {
-    height: 40px;
-    width: 40px;
-    position: static;
+    display: none;
   }
 
   #game-prompt {
@@ -717,7 +705,7 @@ h3 {
   }
 
   .developer {
-    margin-top: 100px;
-    font-size: 14pt;
+    margin-top: 80px;
+    font-size: 12pt;
   }
 }
