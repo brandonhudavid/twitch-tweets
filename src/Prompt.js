@@ -5,7 +5,7 @@ export class Prompt extends React.Component {
       super(props);
       this.prompt1 = "Who made this tweet?"
       this.prompt2 = "Correct! Click the arrow for the next tweet."
-      this.prompt3 = "Hold this L. Click the arrow to continue."
+      this.prompt3 = "Hold this L. Better luck next time."
       this.state = {
           prompt: "Who made this tweet?"
       }

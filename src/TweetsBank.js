@@ -67,17 +67,17 @@ var TweetsBank = {
         "text": "sprite is god tier soda",
         "datetime": "6:28 PM · Oct 15, 2021"
     },
-    "1451288036998737925": {
+    "1412530085240852482": {
         "name": "Pokimane",
         "handle": "pokimanelol",
-        "text": "clout is one helluva drug",
-        "datetime": "1:43 PM · Oct 21, 2021"
+        "text": "all moved in, any girls wanna come over?",
+        "datetime": "2:53 PM · Jul 6, 2021"
     },
-    "1425186378510331904": {
+    "1445794302760652806": {
         "name": "Pokimane",
         "handle": "pokimanelol",
-        "text": "homeless but without the m 😔",
-        "datetime": "1:04 PM · Aug 10, 2021"
+        "text": "at least people can't over-exaggerate me “making millions a month off my viewers” anymore 🤪",
+        "datetime": "9:53 AM · Oct 6, 2021"
     },
     "1410323480919166978": {
         "name": "Pokimane",
@@ -85,11 +85,11 @@ var TweetsBank = {
         "text": "kinda miss fortnite..",
         "datetime": "12:44 PM · Jun 30, 2021"
     },
-    "1419350369843388419": {
+    "1315003049312616448": {
         "name": "Pokimane",
         "handle": "pokimanelol",
-        "text": "twitter is a dating app lol",
-        "datetime": "10:34 AM · Jul 25, 2021"
+        "text": "@BarackObama wanna play among us?",
+        "datetime": "11:55 AM · Oct 10, 2020"
     },
     "1470126225062608900": {
         "name": "Sodapoppin",

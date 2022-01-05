@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;900&display=swap');
 
 *:not(.twitter-tweet) {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -274,7 +274,7 @@ h3 {
 }
 
 .choice-default:active {
-  background-color: #168eda !important;
+  background-color: #128ad4 !important;
 }
 
 .choice-wrong {
@@ -378,7 +378,7 @@ h3 {
   height: 100px;
   width: 100px;
   position: absolute;
-  filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.25));
+  filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.5));
 }
 
 .tooltip {
@@ -460,6 +460,7 @@ h3 {
   left: 50px;
   border: 8px solid transparent;
   border-top-color: white;
+  z-index: 999;
 }
 
 .streamer {
@@ -469,11 +470,12 @@ h3 {
   border-radius: 50%;
   border: 1px solid white;
   margin: 0;
-  transition: 0.5s ease;
+  transition: 0.35s ease;
+  filter: drop-shadow(0px 8px 8px rgba(0,0,0,0.25))
 }
 
 .streamer:hover {
-  filter: drop-shadow(0px 12px 4px rgba(0,0,0,0.25));
+  filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.5));
 }
 
 .streamer1, .streamer3, .streamer5, .streamer7 {
@@ -482,14 +484,15 @@ h3 {
 
 .streamer2, .streamer4, .streamer6, .streamer8 {
   transform: translateY(100px);
+  z-index: 999;
 }
 
 .streamer1:hover, .streamer3:hover, .streamer5:hover, .streamer7:hover {
-  transform: translateY(-12px);
+  transform: translateY(8px);
 }
 
 .streamer2:hover, .streamer4:hover, .streamer6:hover, .streamer8:hover {
-  transform: translateY(88px);
+  transform: translateY(108px);
 }
 
 .streamers-container {
@@ -535,6 +538,10 @@ h3 {
   padding: 10px 20px;
   border-radius: 100px;
   font-weight: 700;
+}
+
+.twitter-btn:active {
+  background-color: #128ad4 !important;
 }
 
 .twitter-logo {

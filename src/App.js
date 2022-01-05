@@ -12,6 +12,7 @@ import Prompt from "./Prompt";
 import TweetHidden from './TweetHidden';
 import MultipleChoice from './MultipleChoice';
 import TweetEmbed from './TweetEmbed';
+import ErrorBoundary from './ErrorBoundary';
 import TweetsBank from './TweetsBank';
 import EmotesLayer from './EmotesLayer';
 import StreamersLayer from './StreamersLayer';
@@ -21,6 +22,7 @@ import Slide from 'react-reveal/Slide';
 import Rotate from 'react-reveal/Rotate';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
 import { TwitterShareButton, TwitterIcon } from "react-share";
+import TestError from './TestError';
 
 export class App extends React.Component {
   constructor(props) {
@@ -68,14 +70,21 @@ export class App extends React.Component {
       guessed: false,
       score: 0,
     }, () => {
-      try {
-        // Render Twitter embed after state change
-        setTimeout(() => {
-          ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
-        }, 1000)
-      } catch (e) {
-        console.log("Failed to render embedded tweet:", e)
-      }
+      ReactDOM.render(
+        <ErrorBoundary tweetAttr={this.tweetAttr}>
+          <TestError />
+          <TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>
+        </ErrorBoundary>
+        , document.querySelector(".twitter-tweet-container")
+      )
+      // try {
+      //   // Render Twitter embed after state change
+      //   setTimeout(() => {
+      //     ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
+      //   }, 1000)
+      // } catch (e) {
+      //   console.log("Failed to render embedded tweet:", e)
+      // }
   });
   }
 
@@ -94,14 +103,21 @@ export class App extends React.Component {
       guessed: false,
       correct: false,
     }, () => {
-      try {
-        // Render Twitter embed after state change
-        setTimeout(() => {
-          ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
-        }, 1000)
-      } catch (e) {
-        console.log("Failed to render embedded tweet:", e)
-      }
+      ReactDOM.render(
+        <ErrorBoundary tweetAttr={this.tweetAttr}>
+          <TestError />
+          <TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>
+        </ErrorBoundary>
+        , document.querySelector(".twitter-tweet-container")
+      )
+      // try {
+      //   // Render Twitter embed after state change
+      //   setTimeout(() => {
+      //     ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
+      //   }, 1000)
+      // } catch (e) {
+      //   console.log("Failed to render embedded tweet:", e)
+      // }
   });
   }
 
@@ -219,9 +235,6 @@ export class App extends React.Component {
         currHighScore: Math.max(prevState.score + 1, prevState.prevHighScore),
         correct: true,
       }))
-      document.querySelector("#game-prompt").addEventListener("click", () => {
-        this.startNextRound();
-      }, {once: true})
     } else {
       this.answer = answer;
       // Set high score to local storage
@@ -299,9 +312,9 @@ export class App extends React.Component {
             <CtaPrimary text="Play again" onClick={() => this.startGame()}/>
             <TwitterShareButton
 									url='https://brandonhudavid.com/twitch-tweets-prod/'
-									title={"I scored " + this.state.score + " in Twitch Tweets! How well do you know these Twitch streamers?"}
+									title={"Wow! I scored " + this.state.score + " in Twitch Tweets! How well do you know these Twitch streamers?"}
 									hashtags={["TwitchTweets"]}>
-                    <div className="twitter-btn"><img className="twitter-logo" src={TwitterLogo} alt="Twitter logo"/>Tweet</div>
+                    <div className="twitter-btn"><img className="twitter-logo" src={TwitterLogo} alt="Twitter logo"/>Share score</div>
             </TwitterShareButton>
             <h3 className="developer">developed by <a className="dev-link" href="https://twitter.com/bdiddydavid" target="_blank">@bdiddydavid</a></h3>
           </Slide>
