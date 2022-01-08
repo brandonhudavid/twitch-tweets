@@ -1,6 +1,6 @@
 {
   "name": "twitch-tweets",
-  "homepage": "http://brandonhudavid.com/twitch-tweets-prod/",
+  "homepage": "http://twitchtweets.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
