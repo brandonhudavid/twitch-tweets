@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
-import Zoom from 'react-reveal/Zoom';
+import Bounce from 'react-reveal/Bounce';
 import Flip from 'react-reveal/Flip';
 import logo from './img/twitchtweets_logo.png';
 import TwitterLogo from './img/twitter_logo.png';
@@ -12,28 +12,20 @@ import Prompt from "./Prompt";
 import TweetHidden from './TweetHidden';
 import MultipleChoice from './MultipleChoice';
 import TweetEmbed from './TweetEmbed';
-import ErrorBoundary from './ErrorBoundary';
 import TweetsBank from './TweetsBank';
 import EmotesLayer from './EmotesLayer';
 import StreamersLayer from './StreamersLayer';
+import Stats from './Stats';
 import cloneDeep from 'lodash/cloneDeep';
 import Fade from 'react-reveal/Fade';
 import Slide from 'react-reveal/Slide';
 import Rotate from 'react-reveal/Rotate';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
-import { TwitterShareButton, TwitterIcon } from "react-share";
-import TestError from './TestError';
+import { TwitterShareButton } from "react-share";
 
 export class App extends React.Component {
   constructor(props) {
       super(props);
-      // Local storage for high score and first game
-      if (!localStorage.getItem("highScore")) {
-        localStorage.setItem("highScore", 0)
-      }
-      if (!localStorage.getItem("firstGame")) {
-        localStorage.setItem("firstGame", "true")
-      }
       this.state = {
         currentPage: "landing",
         guessed: false,
@@ -42,7 +34,8 @@ export class App extends React.Component {
         prevHighScore: localStorage.getItem("highScore") || 0,
         currHighScore: 0,
         endState: "default",
-        tweetId: null
+        tweetId: null,
+        showStats: false
       }
       // Streamers
       this.choices = [
@@ -70,21 +63,12 @@ export class App extends React.Component {
       guessed: false,
       score: 0,
     }, () => {
-      ReactDOM.render(
-        <ErrorBoundary tweetAttr={this.tweetAttr}>
-          <TestError />
-          <TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>
-        </ErrorBoundary>
-        , document.querySelector(".twitter-tweet-container")
-      )
-      // try {
-      //   // Render Twitter embed after state change
-      //   setTimeout(() => {
-      //     ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
-      //   }, 1000)
-      // } catch (e) {
-      //   console.log("Failed to render embedded tweet:", e)
-      // }
+      try {
+        // Render Twitter embed after state change
+          ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
+      } catch (e) {
+        console.log("Failed to render embedded tweet:", e)
+      }
   });
   }
 
@@ -103,21 +87,11 @@ export class App extends React.Component {
       guessed: false,
       correct: false,
     }, () => {
-      ReactDOM.render(
-        <ErrorBoundary tweetAttr={this.tweetAttr}>
-          <TestError />
-          <TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>
-        </ErrorBoundary>
-        , document.querySelector(".twitter-tweet-container")
-      )
-      // try {
-      //   // Render Twitter embed after state change
-      //   setTimeout(() => {
-      //     ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
-      //   }, 1000)
-      // } catch (e) {
-      //   console.log("Failed to render embedded tweet:", e)
-      // }
+      try {
+        ReactDOM.render(<TwitterTweetEmbed tweetId={this.state.tweetId} options={{"align": "center", "cards":"hidden"}}/>, document.querySelector(".twitter-tweet-container"))
+      } catch (e) {
+        console.log("Failed to render embedded tweet:", e)
+      }
   });
   }
 
@@ -131,8 +105,7 @@ export class App extends React.Component {
   }
 
   endGameFlavorText() {
-    if (localStorage.getItem("firstGame") == "true") {
-      localStorage.setItem("firstGame", "false")
+    if (localStorage.getItem("gamesPlayed") == "1") {
       if (this.state.score > 2) {
         return ["Hey, not bad for your first go...","Run it back?"]
       } else {
@@ -182,13 +155,10 @@ export class App extends React.Component {
       ReactDOM.render(
         <Fade bottom>
           <div id="alert-reload">
-            You will start seeing reused tweets.
+            You will now be seeing reused tweets. If chat sees this VI VON ZULUL
           </div>
         </Fade>
       , document.querySelector("#alert-container"));
-      setTimeout(() => {
-        ReactDOM.unmountComponentAtNode(document.querySelector("#alert-container"));
-      }, 5000)
     }
     var bankKeys = Object.keys(this.tweetsBank);
     var tweetId = bankKeys[this.getRandomInt(bankKeys.length)];
@@ -228,6 +198,56 @@ export class App extends React.Component {
       this.currentChoices = fourChoices;
   }
 
+  localStorageEndGame() {
+    // highScore
+    let storedHighScore = localStorage.getItem("highScore");
+    if (!storedHighScore || storedHighScore < this.state.currHighScore) {
+      localStorage.setItem("highScore", this.state.currHighScore);
+    }
+    // gamesPlayed
+    let storedGamesPlayed = localStorage.getItem("gamesPlayed");
+    if (!storedGamesPlayed) {
+      localStorage.setItem("gamesPlayed", 1);
+    } else {
+      localStorage.setItem("gamesPlayed", parseInt(storedGamesPlayed, 10) + 1);
+    }
+    // tweetsSeen
+    let storedTweetsSeen = localStorage.getItem("tweetsSeen");
+    if (!storedTweetsSeen) {
+      localStorage.setItem("tweetsSeen", this.state.score + 1)
+    } else {
+      localStorage.setItem("tweetsSeen", parseInt(storedTweetsSeen, 10) + this.state.score + 1)
+    }
+    // tweetsCorrect
+    let storedtweetsCorrect = localStorage.getItem("tweetsCorrect");
+    if (!storedtweetsCorrect) {
+      localStorage.setItem("tweetsCorrect", this.state.score)
+    } else {
+      localStorage.setItem("tweetsCorrect", parseInt(storedtweetsCorrect, 10) + this.state.score)
+    }
+    // currentDrought
+    let storedCurrentDrought = localStorage.getItem("currentDrought");
+    if (!storedCurrentDrought) {
+      if (this.state.score == 0) {
+        localStorage.setItem("currentDrought", 1)
+      } else {
+        localStorage.setItem("currentDrought", 0)  
+      }
+    } else {
+      if (this.state.score == 0) {
+        localStorage.setItem("currentDrought", parseInt(storedCurrentDrought) + 1);
+      } else {
+        localStorage.setItem("currentDrought", 0);
+      }
+    }
+    // longestDrought
+    let storedLongestDrought = localStorage.getItem("longestDrought");
+    if (!storedLongestDrought) {
+      localStorage.setItem("longestDrought", 0)
+    }
+    localStorage.setItem("longestDrought", Math.max(storedLongestDrought, localStorage.getItem("currentDrought")))
+  }
+
   checkAnswer(selected, answer) {
     if (selected == answer) {
       this.setState(prevState => ({
@@ -237,10 +257,7 @@ export class App extends React.Component {
       }))
     } else {
       this.answer = answer;
-      // Set high score to local storage
-      if (!localStorage.getItem("highScore") || localStorage.getItem("highScore") < this.state.currHighScore) {
-        localStorage.setItem("highScore", this.state.currHighScore);
-      }
+      this.localStorageEndGame();
     }
     // Reveal correct/wrong choices
     var choiceElems = document.querySelectorAll(".choice");
@@ -260,15 +277,19 @@ export class App extends React.Component {
     })
   }
 
+  showStats() {
+    this.setState((prevState) => ({ showStats: !prevState.showStats }))
+  }
+
   renderPage() {
     switch (this.state.currentPage) {
       case "landing":
         return (
           <div>
-            <Zoom left opposite>
+            <Bounce delay={200} duration={1250}>
               <img id="logo" src={logo} alt="Logo" />
-            </Zoom>
-            <Flip left delay={600}>
+            </Bounce>
+            <Flip top delay={600}>
               <Landing />
             </Flip>
             <Fade bottom delay={600} duration={500}>
@@ -307,6 +328,10 @@ export class App extends React.Component {
         return (
           <div>
             <span id="high-score">High score: {Math.max(this.state.currHighScore, this.state.prevHighScore)}</span>
+            <span id="stats-prompt" onClick={() => this.showStats()}>{this.state.showStats ? "Hide" : "Click for"} additional stats</span>
+            <Slide left when={this.state.showStats} duration={500}>
+              <Stats />
+            </Slide>
             <Slide right>
             <GameOver score={this.state.score} flavorText={this.state.flavorText} />
             <CtaPrimary text="Play again" onClick={() => this.startGame()}/>

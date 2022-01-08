@@ -129,7 +129,7 @@ h3 {
   height: 40px;
   line-height: 40px;
   padding: 4px 0px;
-  outline: white solid 2px;
+  border: white solid 2px;
   color: white;
   border-radius: 80px;
   cursor: pointer;
@@ -291,10 +291,17 @@ h3 {
   pointer-events: none;
 }
 
-#high-score, #score {
+#high-score, #score, #stats-prompt {
   position: fixed;
   color: white;
   font-size: 16pt;
+}
+
+#score {
+  font-size: 24pt;
+  font-weight: 900;
+  bottom: 40px;
+  right: 60px;
 }
 
 #high-score {
@@ -304,11 +311,37 @@ h3 {
   font-size: 16pt;
 }
 
-#score {
-  font-size: 24pt;
-  font-weight: 900;
-  bottom: 40px;
-  right: 60px;
+#stats-prompt {
+  top: 48px;
+  left: 24px;
+  font-weight: 700;
+  font-size: 16pt;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#stats-prompt:hover {
+  color: #1DA1F2;
+}
+
+#stats-container {
+  position: fixed;
+  text-align: left;
+  color: white;
+  left: 24px;
+  font-weight: 700;
+  font-size: 16pt;
+  line-height: 24pt;
+}
+
+.stats-left {
+  display: inline-block;
+  text-align: left;
+}
+
+.stats-right {
+  display: inline-block;
+  text-align: right;
 }
 
 #score-mobile {
@@ -471,7 +504,7 @@ h3 {
   border: 1px solid white;
   margin: 0;
   transition: 0.35s ease;
-  filter: drop-shadow(0px 8px 8px rgba(0,0,0,0.25))
+  filter: drop-shadow(0px 8px 8px rgba(0,0,0,0.25));
 }
 
 .streamer:hover {
@@ -500,6 +533,7 @@ h3 {
 }
 
 .developer {
+  font-size: 14pt;
   margin-top: 240px;
 }
 
@@ -528,7 +562,7 @@ h3 {
   color: red;
   padding: 12px 20px;
   font-weight: 500;
-  filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.25));
+  filter: drop-shadow(0px 8px 8px rgba(0,0,0,0.25));
 }
 
 .twitter-btn {
