@@ -7,35 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#000000" />
     <meta
-      name="description"
+      name="Twitch Tweets"
       content="Web site created using create-react-app"
     />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <!-- Facebook meta tags -->
+    <meta property="og:url"content="http://twitchtweets.com/" />
+    <meta property="og:title" content="Twitch Tweets | How well do you know your streamers?" />
+    <meta property="og:description" content="A simple game that undeniably proves how well you know your live streamers. Get a random Tweet, and guess who made the tweet from 4 of your favorite streamers. Keep guessing until you take the L." />
+    <meta property="og:image" content="https://raw.githubusercontent.com/brandonhudavid/twitch-tweets/main/src/img/twitchtweets_logo.png" />
+    <!-- Twitter meta tag -->
+    <meta name="twitter:card" content="summary_large_image">
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
     <title>Twitch Tweets</title>
-    <!-- <script>window.twttr = (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0],
-        t = window.twttr || {};
-      if (d.getElementById(id)) return t;
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "https://platform.twitter.com/widgets.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    
-      t._e = [];
-      t.ready = function(f) {
-        t._e.push(f);
-      }; -->
-    
-      <!-- return t;
-    }(document, "script", "twitter-wjs"));</script> -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-525NVFSMBY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-525NVFSMBY');
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
