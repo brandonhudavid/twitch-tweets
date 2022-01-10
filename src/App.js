@@ -353,6 +353,7 @@ export class App extends React.Component {
   render() {
     return (
       <div id="container">
+        <div id="version">v{process.env.REACT_APP_VERSION}</div>
         <div id="alert-container"></div>
         {this.renderPage()}
         <EmotesLayer currentPage={this.state.currentPage} guessed={this.state.guessed} correct={this.state.correct} />
