@@ -336,7 +336,7 @@ export class App extends React.Component {
             <GameOver score={this.state.score} flavorText={this.state.flavorText} />
             <CtaPrimary text="Play again" onClick={() => this.startGame()}/>
             <TwitterShareButton
-									url='http://twitchtweets.com/'
+									url='https://twitchtweets.com/'
 									title={"Wow! I scored " + this.state.score + " in Twitch Tweets! How well do you know these Twitch streamers?"}
 									hashtags={["TwitchTweets"]}>
                     <div className="twitter-btn"><img className="twitter-logo" src={TwitterLogo} alt="Twitter logo"/>Share score</div>
