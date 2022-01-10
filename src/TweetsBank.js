@@ -79,11 +79,11 @@ var TweetsBank = {
         "text": "at least people can't over-exaggerate me “making millions a month off my viewers” anymore 🤪",
         "datetime": "9:53 AM · Oct 6, 2021"
     },
-    "1410323480919166978": {
+    "1479622627111030785": {
         "name": "Pokimane",
         "handle": "pokimanelol",
-        "text": "kinda miss fortnite..",
-        "datetime": "12:44 PM · Jun 30, 2021"
+        "text": "the fire nation attacked",
+        "datetime": "5:14 PM · Jan 7, 2022"
     },
     "1315003049312616448": {
         "name": "Pokimane",
