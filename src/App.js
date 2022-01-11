@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import db from './Firebase';
-import { doc, updateDoc, increment, addDoc, collection, setDoc } from "firebase/firestore"; 
+import { doc, increment, setDoc } from "firebase/firestore"; 
 import './App.css';
 import Bounce from 'react-reveal/Bounce';
 import Flip from 'react-reveal/Flip';
@@ -263,11 +263,11 @@ export class App extends React.Component {
   async addAnswerToFirebase(selected) {
     // Add answer to Firebase
     try {
-      await updateDoc(doc(db, "tweetIds", this.state.tweetId), {
+      await setDoc(doc(db, "tweetIds", this.state.tweetId), {
         [selected]: increment(1)
-      });
+      }, {merge: true});
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.error("Error adding answer to firebase: ", e);
     }
   }
 
@@ -278,7 +278,7 @@ export class App extends React.Component {
         count: increment(1)
       }, {merge: true});
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.error("Error adding score to firebase: ", e);
     }
   }
 
