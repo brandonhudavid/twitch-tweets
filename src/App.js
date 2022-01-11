@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import db from './Firebase';
+import { doc, updateDoc, increment, addDoc, collection, setDoc } from "firebase/firestore"; 
 import './App.css';
 import Bounce from 'react-reveal/Bounce';
 import Flip from 'react-reveal/Flip';
@@ -37,6 +39,7 @@ export class App extends React.Component {
         tweetId: null,
         showStats: false
       }
+
       // Streamers
       this.choices = [
         "Mizkif",
@@ -257,14 +260,40 @@ export class App extends React.Component {
     localStorage.setItem("longestDrought", Math.max(storedLongestDrought, localStorage.getItem("currentDrought")))
   }
 
+  async addAnswerToFirebase(selected) {
+    // Add answer to Firebase
+    try {
+      await updateDoc(doc(db, "tweetIds", this.state.tweetId), {
+        [selected]: increment(1)
+      });
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
+
+  async addScoreToFirebase() {
+    // Add score to Firebase
+    try {
+      await setDoc(doc(db, "score", this.state.score.toString()), {
+        count: increment(1)
+      }, {merge: true});
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
+
   checkAnswer(selected, answer) {
+    this.addAnswerToFirebase(selected)
     if (selected == answer) {
+      // Correct answer
       this.setState(prevState => ({
         score: prevState.score + 1,
         currHighScore: Math.max(prevState.score + 1, prevState.prevHighScore),
         correct: true,
       }))
     } else {
+      // Wrong answer
+      this.addScoreToFirebase();
       this.answer = answer;
       this.localStorageEndGame();
     }
