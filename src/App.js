@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import db from './Firebase';
-import { doc, increment, setDoc } from "firebase/firestore"; 
+// import db from './Firebase';
+// import { doc, increment, setDoc } from "firebase/firestore"; 
 import './App.css';
 import Bounce from 'react-reveal/Bounce';
 import Flip from 'react-reveal/Flip';
@@ -260,30 +260,30 @@ export class App extends React.Component {
     localStorage.setItem("longestDrought", Math.max(storedLongestDrought, localStorage.getItem("currentDrought")))
   }
 
-  async addAnswerToFirebase(selected) {
-    // Add answer to Firebase
-    try {
-      await setDoc(doc(db, "tweetIds", this.state.tweetId), {
-        [selected]: increment(1)
-      }, {merge: true});
-    } catch (e) {
-      console.error("Error adding answer to firebase: ", e);
-    }
-  }
+  // async addAnswerToFirebase(selected) {
+  //   // Add answer to Firebase
+  //   try {
+  //     await setDoc(doc(db, "tweetIds", this.state.tweetId), {
+  //       [selected]: increment(1)
+  //     }, {merge: true});
+  //   } catch (e) {
+  //     console.error("Error adding answer to firebase: ", e);
+  //   }
+  // }
 
-  async addScoreToFirebase() {
-    // Add score to Firebase
-    try {
-      await setDoc(doc(db, "score", this.state.score.toString()), {
-        count: increment(1)
-      }, {merge: true});
-    } catch (e) {
-      console.error("Error adding score to firebase: ", e);
-    }
-  }
+  // async addScoreToFirebase() {
+  //   // Add score to Firebase
+  //   try {
+  //     await setDoc(doc(db, "score", this.state.score.toString()), {
+  //       count: increment(1)
+  //     }, {merge: true});
+  //   } catch (e) {
+  //     console.error("Error adding score to firebase: ", e);
+  //   }
+  // }
 
   checkAnswer(selected, answer) {
-    this.addAnswerToFirebase(selected)
+    // this.addAnswerToFirebase(selected)
     if (selected == answer) {
       // Correct answer
       this.setState(prevState => ({
@@ -293,7 +293,7 @@ export class App extends React.Component {
       }))
     } else {
       // Wrong answer
-      this.addScoreToFirebase();
+      // this.addScoreToFirebase();
       this.answer = answer;
       this.localStorageEndGame();
     }
