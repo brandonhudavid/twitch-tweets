@@ -379,8 +379,8 @@ export class App extends React.Component {
 									hashtags={["TwitchTweets"]}>
                     <div className="twitter-btn"><img className="twitter-logo" src={TwitterLogo} alt="Twitter logo"/>Share score</div>
             </TwitterShareButton>
-            <h3 className="developer">accepting donations on venmo @brandonhudavid</h3>
-            {/* <h3 className="developer">developed by <a className="dev-link" href="https://twitter.com/bdiddydavid" target="_blank">@bdiddydavid</a></h3> */}
+            {/* <h3 className="developer">accepting donations on venmo @brandonhudavid</h3> */}
+            <h3 className="developer">developed by <a className="dev-link" href="https://twitter.com/bdiddydavid" target="_blank">@bdiddydavid</a></h3>
           </Slide>
           </div>
         );
