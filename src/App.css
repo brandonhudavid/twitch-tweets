@@ -15,6 +15,7 @@ html {
 }
 
 body {
+  height: 100%;
   overflow: hidden;
 }
 
@@ -28,6 +29,10 @@ body {
   100% {
       background-position: 30% 50%;
   }
+}
+
+.gameOver > .react-reveal {
+  animation-fill-mode: backwards !important;
 }
 
 #container {
@@ -52,7 +57,8 @@ body {
   background: linear-gradient(
     rgba(0, 0, 0, 0.5), 
     rgba(0, 0, 0, 0.5)
-  ),  url('./img/gifs/mizkif.gif');
+  ),  url('./img/gifs/mizkif.gif') center;
+    animation: none !important;
     background-size: cover;
 }
 
@@ -60,7 +66,8 @@ body {
   background: linear-gradient(
     rgba(0, 0, 0, 0.6), 
     rgba(0, 0, 0, 0.6)
-  ), url('./img/gifs/hasanabi.gif');
+  ), url('./img/gifs/hasanabi.gif') center;
+  animation: none !important;
     background-size: cover;
 }
 
@@ -68,7 +75,8 @@ body {
   background: linear-gradient(
     rgba(0, 0, 0, 0.5), 
     rgba(0, 0, 0, 0.5)
-  ),  url('./img/gifs/sykkuno.gif');
+  ),  url('./img/gifs/sykkuno.gif') center;
+  animation: none !important;
     background-size: cover;
 }
 
@@ -76,7 +84,8 @@ body {
   background: linear-gradient(
     rgba(0, 0, 0, 0.5), 
     rgba(0, 0, 0, 0.5)
-  ),  url('./img/gifs/ludwig.gif');
+  ),  url('./img/gifs/ludwig.gif') center;
+  animation: none !important;
     background-size: cover;
 }
 
@@ -84,7 +93,8 @@ body {
   background: linear-gradient(
     rgba(0, 0, 0, 0.5), 
     rgba(0, 0, 0, 0.5)
-  ), url('./img/gifs/pokimane.gif');
+  ), url('./img/gifs/pokimane.gif') center;
+  animation: none !important;
     background-size: cover;
 }
 
@@ -92,20 +102,100 @@ body {
   background: linear-gradient(
     rgba(0, 0, 0, 0.5), 
     rgba(0, 0, 0, 0.5)
-  ), url('./img/gifs/xqc.gif');
+  ), url('./img/gifs/xqc.gif') center;
+  animation: none !important;
     background-size: cover;
 }
 
 .Sodapoppin {
-  background-image: url('./img/gifs/sodapoppin.gif');
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.5), 
+    rgba(0, 0, 0, 0.5)
+  ), url('./img/gifs/sodapoppin.gif') center;
+  animation: none !important;
     background-size: cover;
 }
 
 .MoistCr1TiKaL {
   background: linear-gradient(
+    rgba(0, 0, 0, 0.5), 
+    rgba(0, 0, 0, 0.5)
+  ), url('./img/gifs/MoistCr1TiKaL.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+/* OTV */
+
+.Scarra {
+  background: linear-gradient(
     rgba(0, 0, 0, 0.6), 
     rgba(0, 0, 0, 0.6)
-  ), url('./img/gifs/MoistCr1TiKaL.gif');
+  ), url('./img/gifs/scarra.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.LilyPichu {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/lilypichu.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.DisguisedToast {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.5), 
+    rgba(0, 0, 0, 0.5)
+  ), url('./img/gifs/disguisedtoast.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.Yvonnie {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/yvonnie.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.Michael {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/michaelreeves.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.Sydeon {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/sydeon.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.Masayoshi {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/itzmasayoshi.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.QuarterJade {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/quarterjade.gif') center;
+  animation: none !important;
   background-size: cover;
 }
 
@@ -124,13 +214,32 @@ h3 {
   height: auto;
 }
 
+#mini-logo {
+  margin-top: 2vh;
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+}
+
 #landing {
   display: inline-block;
   width: 440px;
 }
 
+#select { width: 340px; text-align: center; margin: 0 auto; }
+#select #selection-container { margin: 60px 0 24px 0; } 
+#select img { width: 100px; height: auto; position: relative; margin: 0 32px; filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.5)); cursor: pointer; opacity: 0.4; transition: 0.25s ease; }
+#select img:hover { opacity: 0.7; }
+#select img.selected { opacity: 1; }
+#select .streamlink { position: relative; }
+#select .streamlink .streamtext { left: 50%; bottom: 104%; transform: translateX(-50%); margin: 0; }
+#select .streamtext.selected { visibility: visible; }
+
+
+#game { margin-top: -8vh; }
+
 #gameOver {
-  margin: 10vh auto 0 auto;
+  margin: 8vh auto 0 auto;
   display: block;
   width: 440px;
 }
@@ -330,6 +439,7 @@ h3 {
   font-size: 16pt;
   text-decoration: underline;
   cursor: pointer;
+  z-index: 1;
 }
 
 #stats-prompt:hover {
@@ -339,11 +449,19 @@ h3 {
 #stats-container {
   position: fixed;
   text-align: left;
+  margin: 24px 0 0 24px;
   color: white;
-  left: 24px;
   font-weight: 700;
   font-size: 16pt;
-  line-height: 24pt;
+  line-height: 22pt;
+  background-color: rgba(0,0,0,0.9);
+  padding: 12px;
+}
+
+#stats-container h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  text-decoration: underline;
 }
 
 .stats-left {
@@ -416,13 +534,16 @@ h3 {
 }
 
 .emotes-wrapper {
-  width: 100%;
+  position: static;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 .emote {
-  height: 100px;
-  width: 100px;
-  position: absolute;
+  height: 80px;
+  width: 80px;
   filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.5));
 }
 
@@ -434,12 +555,12 @@ h3 {
   display: inline-block;
 }
 
-.tooltip1 { top: 100px; left: 60px; }
-.tooltip2 { top: 325px; left: 200px; }
-.tooltip3 { top: 550px; left: 80px; }
-.tooltip4 { top: 100px; right: 160px; }
-.tooltip5 { top: 325px; right: 300px; }
-.tooltip6 { top: 550px; right: 180px; }
+.tooltip1 { top: 100px; left: calc(50% - 420px); }
+.tooltip2 { top: 250px; left: calc(50% - 460px); }
+.tooltip3 { top: 400px; left: calc(50% - 420px); }
+.tooltip4 { top: 100px; right: calc(50% - 420px); }
+.tooltip5 { top: 250px; right: calc(50% - 460px); }
+.tooltip6 { top: 400px; right: calc(50% - 420px); }
 
 .tooltip .tooltiptext {
   visibility: hidden;
@@ -452,12 +573,33 @@ h3 {
   padding: 6px 0;
 
   position: absolute;
-  bottom: 200%;
-  left: 50%;
+  bottom: 100%;
+  left: -12px;
   z-index: 1;
   margin-left: -10px;
   margin-bottom: 6px;
 }
+
+.streamers-container {
+  position: static;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.streamers-containerLeft .streamlink, .streamers-containerRight .streamlink { position: absolute; }
+
+.streamers-containerLeft .streamlink1 { top: 160px; left: calc(50% - 400px); }
+.streamers-containerLeft .streamlink2 { top: 260px; left: calc(50% - 300px); }
+.streamers-containerLeft .streamlink3 { top: 360px; left: calc(50% - 400px); }
+.streamers-containerLeft .streamlink4 { top: 460px; left: calc(50% - 300px); }
+.streamers-containerLeft .streamlink9 { top: 560px; left: calc(50% - 400px); }
+
+.streamers-containerRight .streamlink5 { top: 160px; right: calc(50% - 400px); }
+.streamers-containerRight .streamlink6 { top: 260px; right: calc(50% - 300px); }
+.streamers-containerRight .streamlink7 { top: 360px; right: calc(50% - 400px); }
+.streamers-containerRight .streamlink8 { top: 460px; right: calc(50% - 300px); }
 
 .streamlink .streamtext {
   visibility: hidden;
@@ -475,8 +617,11 @@ h3 {
   margin-left: -60px;
 }
 
-.streamlink1 .streamtext, .streamlink3 .streamtext, .streamlink5 .streamtext, .streamlink7 .streamtext { bottom: 100%; }
-.streamlink2 .streamtext, .streamlink4 .streamtext, .streamlink6 .streamtext, .streamlink8 .streamtext { bottom: 10%; }
+.streamtext { bottom: 100%; }
+
+a[href="https://twitter.com/michaelreeves"] .streamtext,
+a[href="https://twitter.com/disguisedtoast"] .streamtext,
+#selection-container .streamtext2 { width: 140px !important; transform: translateX(-10px) }
 
 .tooltip1:hover .tooltiptext1,
 .tooltip2:hover .tooltiptext2,
@@ -491,7 +636,8 @@ h3 {
 .streamlink5:hover .streamtext5,
 .streamlink6:hover .streamtext6,
 .streamlink7:hover .streamtext7,
-.streamlink8:hover .streamtext8 {
+.streamlink8:hover .streamtext8,
+.streamlink9:hover .streamtext9 {
   visibility: visible;
 }
 
@@ -502,11 +648,14 @@ h3 {
   position: absolute;
   width: 0;
   top: 30px;
-  left: 50px;
+  left: 50%;
+  transform: translateX(-50%);
   border: 8px solid transparent;
   border-top-color: white;
   z-index: 999;
 }
+
+#selection-container .tooltip1 { top: 200px; left: 20px; }
 
 .streamer {
   position: relative;
@@ -523,25 +672,8 @@ h3 {
   filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.5));
 }
 
-.streamer1, .streamer3, .streamer5, .streamer7 {
-  transform: translateY(0px);
-}
-
-.streamer2, .streamer4, .streamer6, .streamer8 {
-  transform: translateY(100px);
-  z-index: 999;
-}
-
-.streamer1:hover, .streamer3:hover, .streamer5:hover, .streamer7:hover {
+.streamer:hover {
   transform: translateY(8px);
-}
-
-.streamer2:hover, .streamer4:hover, .streamer6:hover, .streamer8:hover {
-  transform: translateY(108px);
-}
-
-.streamers-container {
-  margin-top: 40px;
 }
 
 .developer {
@@ -564,6 +696,14 @@ h3 {
   left: 0;
   right: 0;
   margin: auto;
+  z-index: 1;
+}
+
+#alert-container svg {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  cursor: pointer;
 }
 
 #alert-reload {
@@ -572,7 +712,7 @@ h3 {
   border: 2px solid red;
   border-radius: 10px;
   color: red;
-  padding: 12px 20px;
+  padding: 12px 28px;
   font-weight: 500;
   filter: drop-shadow(0px 8px 8px rgba(0,0,0,0.25));
 }
@@ -596,6 +736,20 @@ h3 {
   transform: translateY(2px);
   padding-right: 6px;
 }
+
+.footer {
+  position: absolute;
+  width: 100%;
+  bottom: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  line-height: 6pt;
+}
+
+.footer span { font-weight: 700; }
+
+.footer h2 { font-weight: 500; font-size: 10pt; }
 
 @media (max-width: 1200px) {
   .emote {
@@ -719,14 +873,6 @@ h3 {
     height: 64px;
     width: 64px;
     margin: 4px;
-  }
-
-  .streamer1, .streamer3, .streamer5, .streamer7 {
-    transform: translateY(0px);
-  }
-  
-  .streamer2, .streamer4, .streamer6, .streamer8 {
-    transform: translateY(0);
   }
   
   .streamlink2 .streamtext, .streamlink4 .streamtext, .streamlink6 .streamtext, .streamlink8 .streamtext { bottom: 100%; }

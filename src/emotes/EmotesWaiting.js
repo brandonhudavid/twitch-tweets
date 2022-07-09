@@ -1,10 +1,10 @@
 import React from 'react';
-import PauseChamp from './img/emotes/PauseChamp.png';
-import PauseChamp2 from './img/emotes/PauseChamp2.png';
-import monkaW from './img/emotes/monkaW.png';
-import monkaW2 from './img/emotes/monkaW2.png';
-import PepeLaugh from './img/emotes/PepeLaugh.png';
-import PepeLaugh2 from './img/emotes/PepeLaugh2.png';
+import PauseChamp from '../img/emotes/PauseChamp.png';
+import PauseChamp2 from '../img/emotes/PauseChamp2.png';
+import monkaW from '../img/emotes/monkaW.png';
+import monkaW2 from '../img/emotes/monkaW2.png';
+import PepeLaugh from '../img/emotes/PepeLaugh.png';
+import PepeLaugh2 from '../img/emotes/PepeLaugh2.png';
 import Bounce from 'react-reveal/Bounce';
 
 export class EmotesWaiting extends React.Component {

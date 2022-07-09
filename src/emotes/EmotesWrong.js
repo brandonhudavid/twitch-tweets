@@ -1,10 +1,10 @@
 import React from 'react';
-import KEKW from './img/emotes/KEKW.png';
-import OMEGALUL from './img/emotes/OMEGALUL.png';
-import LULW from './img/emotes/LULW.png';
-import LULW2 from './img/emotes/LULW2.png';
-import KEKW2 from './img/emotes/KEKW2.png';
-import OMEGALUL2 from './img/emotes/OMEGALUL2.png';
+import KEKW from '../img/emotes/KEKW.png';
+import OMEGALUL from '../img/emotes/OMEGALUL.png';
+import LULW from '../img/emotes/LULW.png';
+import LULW2 from '../img/emotes/LULW2.png';
+import KEKW2 from '../img/emotes/KEKW2.png';
+import OMEGALUL2 from '../img/emotes/OMEGALUL2.png';
 import Bounce from 'react-reveal/Bounce';
 
 export class EmotesWaiting extends React.Component {

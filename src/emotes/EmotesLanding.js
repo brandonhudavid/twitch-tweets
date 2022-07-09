@@ -1,10 +1,10 @@
 import React from 'react';
-import PogChamp from './img/emotes/PogChamp.png';
-import LULW from './img/emotes/LULW.png';
-import monkaW from './img/emotes/monkaW.png';
-import KEKW2 from './img/emotes/KEKW2.png';
-import POGGERS2 from './img/emotes/POGGERS2.png';
-import PepeLaugh2 from './img/emotes/PepeLaugh2.png';
+import PogChamp from '../img/emotes/PogChamp.png';
+import LULW from '../img/emotes/LULW.png';
+import monkaW from '../img/emotes/monkaW.png';
+import KEKW2 from '../img/emotes/KEKW2.png';
+import POGGERS2 from '../img/emotes/POGGERS2.png';
+import PepeLaugh2 from '../img/emotes/PepeLaugh2.png';
 import Bounce from 'react-reveal/Bounce';
 
 export class EmotesLanding extends React.Component {

@@ -1,8 +1,8 @@
 import React from 'react';
-import EmotesLanding from './EmotesLanding';
-import EmotesCorrect from './EmotesCorrect';
-import EmotesWaiting from './EmotesWaiting';
-import EmotesWrong from './EmotesWrong';
+import EmotesLanding from '../emotes/EmotesLanding';
+import EmotesCorrect from '../emotes/EmotesCorrect';
+import EmotesWaiting from '../emotes/EmotesWaiting';
+import EmotesWrong from '../emotes/EmotesWrong';
 
 export class EmotesLayer extends React.Component {
   constructor(props) {
@@ -33,6 +33,10 @@ export class EmotesLayer extends React.Component {
         this.setState({
             emoteState: "gameOver"
         })
+    } else if (this.props.currentPage == "select" && this.state.emoteState != "select") {
+        this.setState({
+            emoteState: "select"
+        })
     }
   }
 
@@ -49,7 +53,7 @@ export class EmotesLayer extends React.Component {
     if (this.state.emoteState == "wrong") {
         return <EmotesWrong />
     }
-    if (this.state.emoteState == "gameOver") {
+    if (this.state.emoteState == "gameOver" || this.state.emoteState == "select") {
         return null;
     }
     return (<div></div>);

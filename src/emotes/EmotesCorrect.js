@@ -1,10 +1,10 @@
 import React from 'react';
-import PogChamp from './img/emotes/PogChamp.png';
-import PogChamp2 from './img/emotes/PogChamp2.png';
-import POGGERS from './img/emotes/POGGERS.png';
-import POGGERS2 from './img/emotes/POGGERS2.png';
-import PogU from './img/emotes/PogU.png';
-import PogU2 from './img/emotes/PogU2.png';
+import PogChamp from '../img/emotes/PogChamp.png';
+import PogChamp2 from '../img/emotes/PogChamp2.png';
+import POGGERS from '../img/emotes/POGGERS.png';
+import POGGERS2 from '../img/emotes/POGGERS2.png';
+import PogU from '../img/emotes/PogU.png';
+import PogU2 from '../img/emotes/PogU2.png';
 import Bounce from 'react-reveal/Bounce';
 
 export class EmotesCorrect extends React.Component {
