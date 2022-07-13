@@ -1,3 +1,16 @@
+export const OTK_ChoicesBank = [
+    "Asmongold",
+    "Esfand",
+    "Rich Campbell",
+    "Mizkif",
+    "Tips Out",
+    "Jschlatt",
+    "Cyr",
+    "Tectone",
+    "Emiru",
+    "Bruce"
+]
+
 export const OTV_ChoicesBank = [
     "Scarra",
     "Pokimane",

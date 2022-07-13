@@ -55,8 +55,8 @@ body {
 
 .Mizkif {
   background: linear-gradient(
-    rgba(0, 0, 0, 0.5), 
-    rgba(0, 0, 0, 0.5)
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
   ),  url('./img/gifs/mizkif.gif') center;
     animation: none !important;
     background-size: cover;
@@ -73,8 +73,8 @@ body {
 
 .Sykkuno {
   background: linear-gradient(
-    rgba(0, 0, 0, 0.5), 
-    rgba(0, 0, 0, 0.5)
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
   ),  url('./img/gifs/sykkuno.gif') center;
   animation: none !important;
     background-size: cover;
@@ -82,8 +82,8 @@ body {
 
 .Ludwig {
   background: linear-gradient(
-    rgba(0, 0, 0, 0.5), 
-    rgba(0, 0, 0, 0.5)
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
   ),  url('./img/gifs/ludwig.gif') center;
   animation: none !important;
     background-size: cover;
@@ -91,8 +91,8 @@ body {
 
 .Pokimane {
   background: linear-gradient(
-    rgba(0, 0, 0, 0.5), 
-    rgba(0, 0, 0, 0.5)
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
   ), url('./img/gifs/pokimane.gif') center;
   animation: none !important;
     background-size: cover;
@@ -100,8 +100,8 @@ body {
 
 .xQc {
   background: linear-gradient(
-    rgba(0, 0, 0, 0.5), 
-    rgba(0, 0, 0, 0.5)
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
   ), url('./img/gifs/xqc.gif') center;
   animation: none !important;
     background-size: cover;
@@ -109,8 +109,8 @@ body {
 
 .Sodapoppin {
   background: linear-gradient(
-    rgba(0, 0, 0, 0.5), 
-    rgba(0, 0, 0, 0.5)
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
   ), url('./img/gifs/sodapoppin.gif') center;
   animation: none !important;
     background-size: cover;
@@ -118,8 +118,8 @@ body {
 
 .MoistCr1TiKaL {
   background: linear-gradient(
-    rgba(0, 0, 0, 0.5), 
-    rgba(0, 0, 0, 0.5)
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
   ), url('./img/gifs/MoistCr1TiKaL.gif') center;
   animation: none !important;
   background-size: cover;
@@ -147,8 +147,8 @@ body {
 
 .DisguisedToast {
   background: linear-gradient(
-    rgba(0, 0, 0, 0.5), 
-    rgba(0, 0, 0, 0.5)
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
   ), url('./img/gifs/disguisedtoast.gif') center;
   animation: none !important;
   background-size: cover;
@@ -195,6 +195,96 @@ body {
     rgba(0, 0, 0, 0.6), 
     rgba(0, 0, 0, 0.6)
   ), url('./img/gifs/quarterjade.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.Emiru {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/emiru.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.Jschlatt {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/jschlatt.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.Asmongold {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/asmongold.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.Esfand {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/esfand.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.Bruce {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/bruce.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.Tectone {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/tectone.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.Cyr {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/cyr.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.Rich {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/rich.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.Tips {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/tips.gif') center;
+  animation: none !important;
+  background-size: cover;
+}
+
+.Nmplol {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.6)
+  ), url('./img/gifs/nmplol.gif') center;
   animation: none !important;
   background-size: cover;
 }
@@ -526,6 +616,7 @@ h3 {
   right: -80px;
   border-radius: 16px;
   transition: 0.25s ease;
+  z-index: 1;
 }
 
 #next-arrow:hover {
@@ -595,11 +686,13 @@ h3 {
 .streamers-containerLeft .streamlink3 { top: 360px; left: calc(50% - 400px); }
 .streamers-containerLeft .streamlink4 { top: 460px; left: calc(50% - 300px); }
 .streamers-containerLeft .streamlink9 { top: 560px; left: calc(50% - 400px); }
+.streamers-containerLeft .streamlink11 { top: 660px; left: calc(50% - 300px); }
 
 .streamers-containerRight .streamlink5 { top: 160px; right: calc(50% - 400px); }
 .streamers-containerRight .streamlink6 { top: 260px; right: calc(50% - 300px); }
 .streamers-containerRight .streamlink7 { top: 360px; right: calc(50% - 400px); }
 .streamers-containerRight .streamlink8 { top: 460px; right: calc(50% - 300px); }
+.streamers-containerRight .streamlink10 { top: 560px; right: calc(50% - 400px); }
 
 .streamlink .streamtext {
   visibility: hidden;
@@ -621,7 +714,7 @@ h3 {
 
 a[href="https://twitter.com/michaelreeves"] .streamtext,
 a[href="https://twitter.com/disguisedtoast"] .streamtext,
-#selection-container .streamtext2 { width: 140px !important; transform: translateX(-10px) }
+#selection-container .selectLSF { width: 140px !important; transform: translateX(-10px) }
 
 .tooltip1:hover .tooltiptext1,
 .tooltip2:hover .tooltiptext2,
@@ -637,7 +730,9 @@ a[href="https://twitter.com/disguisedtoast"] .streamtext,
 .streamlink6:hover .streamtext6,
 .streamlink7:hover .streamtext7,
 .streamlink8:hover .streamtext8,
-.streamlink9:hover .streamtext9 {
+.streamlink9:hover .streamtext9,
+.streamlink10:hover .streamtext10,
+.streamlink11:hover .streamtext11 {
   visibility: visible;
 }
 
@@ -666,6 +761,7 @@ a[href="https://twitter.com/disguisedtoast"] .streamtext,
   margin: 0;
   transition: 0.35s ease;
   filter: drop-shadow(0px 8px 8px rgba(0,0,0,0.25));
+  z-index: 1;
 }
 
 .streamer:hover {
@@ -739,12 +835,12 @@ a[href="https://twitter.com/disguisedtoast"] .streamtext,
 
 .footer {
   position: absolute;
-  width: 100%;
   bottom: 2vh;
   left: 50%;
   transform: translateX(-50%);
   color: white;
   line-height: 6pt;
+  z-index: 0;
 }
 
 .footer span { font-weight: 700; }

@@ -72,8 +72,8 @@ export class StreamersOTV extends React.Component {
                         </div>
                     </Bounce> 
                     <Bounce right delay={this.delay+700}>
-                    <div className="streamlink streamlink8">
-                    <a href="https://twitter.com/itzmasayoshi" target="_blank"><img className="streamer streamer8" src={masayoshi} alt="Masayoshi" />
+                    <div className="streamlink streamlink10">
+                    <a href="https://twitter.com/itzmasayoshi" target="_blank"><img className="streamer streamer10" src={masayoshi} alt="Masayoshi" />
                             <span className="streamtext streamtext8">Masayoshi</span></a>
                         </div>
                     </Bounce> 

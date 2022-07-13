@@ -25,8 +25,8 @@ import Fade from 'react-reveal/Fade';
 import Slide from 'react-reveal/Slide';
 import Rotate from 'react-reveal/Rotate';
 // DATA
-import { LSF_TweetsBank, OTV_TweetsBank } from './data/TweetsBank';
-import { LSF_ChoicesBank, OTV_ChoicesBank } from './data/ChoicesBank';
+import { LSF_TweetsBank, OTK_TweetsBank, OTV_TweetsBank } from './data/TweetsBank';
+import { LSF_ChoicesBank, OTK_ChoicesBank, OTV_ChoicesBank } from './data/ChoicesBank';
 // import db from './data/Firebase';
 // import { doc, increment, setDoc } from "firebase/firestore"; 
 // UTILS
@@ -38,9 +38,12 @@ import _ from 'lodash';
 export class App extends React.Component {
   constructor(props) {
       super(props);
+
+      this.default = "lsf";
+
       this.state = {
         currentPage: "landing",
-        selection: localStorage.getItem("selection") || "otv",
+        selection: localStorage.getItem("selection") || this.default,
         guessed: false,
         correct: false,
         score: 0,
@@ -83,7 +86,7 @@ export class App extends React.Component {
   goToSelect() {
     this.setState({
       currentPage: "select",
-      selection: "otv"
+      selection: this.default
     })
   }
   
@@ -105,17 +108,21 @@ export class App extends React.Component {
 
   renderBanks() {
     switch (this.state.selection) {
+      case "otk":
+        this.choices = OTK_ChoicesBank;
+        this.tweetsBank = OTK_TweetsBank;
+        break;
       case "otv":
         this.choices = OTV_ChoicesBank;
-        this.tweetsBank = cloneDeep(OTV_TweetsBank);
+        this.tweetsBank = OTV_TweetsBank;
         break;
       case "lsf":
         this.choices = LSF_ChoicesBank;
-        this.tweetsBank = cloneDeep(LSF_TweetsBank);
+        this.tweetsBank = LSF_TweetsBank;
         break;
       default:
-        this.choices = OTV_ChoicesBank;
-        this.tweetsBank = cloneDeep(OTV_TweetsBank);
+        this.choices = LSF_ChoicesBank;
+        this.tweetsBank = LSF_TweetsBank;
         break;
     }
   }
@@ -123,7 +130,7 @@ export class App extends React.Component {
   renderSelection() {
     this.setState({
       prevHighScore: localStorage.getItem(this.state.selection + "_highScore"),
-      currHighScore: 0,
+      currHighScore: localStorage.getItem("inGame") == "1" ? parseInt(localStorage.getItem("currScore"),10) : 0,
     })
     this.renderBanks();
   }
@@ -281,7 +288,7 @@ export class App extends React.Component {
   getPrime() {
     let len = Object.keys(this.tweetsBank).length
     let primeArr = []
-    for (var i=0; i < len; i++) {
+    for (var i=this.choices.length; i < len; i++) {
       if (this.gcd(i, len) == 1) primeArr.push(i)
     }
     let ret = primeArr[this.getRandomInt(primeArr.length)]

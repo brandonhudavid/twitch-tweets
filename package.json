@@ -1,7 +1,7 @@
 {
   "name": "twitch-tweets",
   "homepage": "https://twitchtweets.com",
-  "version": "2.0.0",
+  "version": "2.0.0*",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
